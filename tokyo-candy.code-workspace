@@ -1,0 +1,171 @@
+{
+  "folders": [
+    {
+      "path": ".vscode",
+    },
+    {
+      "path": ".",
+      "name": "root",
+    },
+    {
+      "path": "apps",
+    },
+    {
+      "path": "packages",
+    },
+  ],
+  "settings": {
+    // Maximum number of requests for the chat agent - Prevents AI agents from stopping mid-session
+    "chat.agent.maxRequests": 999,
+
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+
+    "npm.packageManager": "pnpm",
+
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.lightbulb.enabled": "on",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+    },
+    "editor.rulers": [100],
+    "editor.overviewRulerBorder": true,
+    "editor.experimentalWhitespaceRendering": "font",
+    "editor.renderWhitespace": "none",
+    "editor.insertSpaces": true,
+
+    "debug.javascript.unmapMissingSources": true,
+
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "html", "css"],
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features",
+    },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma",
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[yaml]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[xml]": {
+      "editor.defaultFormatter": "redhat.vscode-xml",
+    },
+
+    // "typescript.experimental.useTsgo": true,
+    "typescript.format.semicolons": "insert",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    // "typescript.tsdk": "node_modules/@typescript/native-preview/lib",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.reportStyleChecksAsWarnings": false,
+    // "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview/lib",
+    "typescript.autoClosingTags": true,
+    "typescript.preferences.autoImportFileExcludePatterns": [],
+    "typescript.preferences.preferTypeOnlyAutoImports": true,
+    "typescript.suggest.autoImports": true,
+    "typescript.suggest.completeFunctionCalls": true,
+
+    "html.autoClosingTags": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.maxPreserveNewLines": 1,
+
+    "files.watcherExclude": {
+      "**/routeTree.gen.ts": true,
+    },
+    "files.readonlyInclude": {
+      "**/routeTree.gen.ts": true,
+    },
+    "files.exclude": {
+      "**/.cache": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/node_modules": true,
+      "**/.react-router": false,
+      "**/.output": true,
+    },
+    "search.exclude": {
+      "**/routeTree.gen.ts": true,
+      "**/.react-router": true,
+      "**/node_modules": true,
+      "**/.output": true,
+      "**/prisma/generated": true,
+    },
+
+    "cSpell.words": [
+      "Camo",
+      "coor",
+      "Coor",
+      "customerid",
+      "dbaeumer",
+      "djarekg",
+      "dotenv",
+      "fluentui",
+      "griffel",
+      "isbot",
+      "labelledby",
+      "lmdb",
+      "malva",
+      "msgpackr",
+      "ngeslint",
+      "ngplugin",
+      "ngsrc",
+      "ngtemplate",
+      "Stroustrup",
+      "Tsgo",
+      "tsquery",
+      "tsvector",
+      "VITE",
+      "XLARGE",
+      "XSMALL",
+      "XXLARGE",
+    ],
+
+    // Ensure enough terminal history is preserved when running tests.
+    "terminal.integrated.scrollback": 10000,
+
+    // Configure todo-tree to exclude node_modules, dist, and compiled.
+    "todo-tree.filtering.excludeGlobs": ["**/node_modules", "**/dist", "**/compiled"],
+    // Match TODO-APP in addition to other TODOs.
+    "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "TODO-APP"],
+
+    "workbench.editor.labelFormat": "medium",
+  },
+  "extensions": {
+    "recommendations": [
+      "Prisma.prisma",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "cweijan.vscode-postgresql-client2",
+    ],
+  },
+}
