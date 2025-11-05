@@ -10,45 +10,85 @@
       "skipFiles": ["**/<node_internals>/**"],
       "sourceMaps": true,
       "smartStep": true,
-      "internalConsoleOptions": "openOnSessionStart"
-    },
-    {
-      "name": "Launch app",
-      "cwd": "${workspaceFolder}/apps/demo",
-      "request": "launch",
-      "type": "node-terminal",
-      "command": "pnpm run dev",
-      "skipFiles": ["<node_internals>/**"],
-      "sourceMaps": true,
-      "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",
+      "presentation": {
+        "hidden": false,
+        "group": "2",
+        "order": 1
+      }
+    },
+    // {
+    //   "name": "Launch app",
+    //   "cwd": "${workspaceFolder}/apps/demo",
+    //   "request": "launch",
+    //   "type": "node-terminal",
+    //   "command": "pnpm run dev",
+    //   "skipFiles": ["<node_internals>/**"],
+    //   "sourceMaps": true,
+    //   "smartStep": true,
+    //   "internalConsoleOptions": "openOnSessionStart",
+    //   "presentation": {
+    //     "hidden": false,
+    //     "group": "2",
+    //     "order": 2
+    //   }
+    // },
+    // {
+    //   "name": "Launch browser",
+    //   "type": "chrome",
+    //   "request": "launch",
+    //   "cwd": "${workspaceFolder}/apps/demo",
+    //   "webRoot": "${workspaceFolder}/apps/demo",
+    //   "url": "http://localhost:3000/",
+    //   "internalConsoleOptions": "openOnSessionStart",
+    //   "sourceMaps": true,
+    //   "smartStep": true,
+    //   "presentation": {
+    //     "hidden": false,
+    //     "group": "2",
+    //     "order": 3
+    //   }
+    // },
+    // {
+    //   "name": "Next.js: debug server-side",
+    //   "type": "node-terminal",
+    //   "request": "launch",
+    //   "command": "pnpm run dev -- --inspect",
+    //   "cwd": "${workspaceFolder}/apps/demo"
+    // },
+    // {
+    //   "name": "Next.js: debug client-side",
+    //   "type": "chrome",
+    //   "request": "launch",
+    //   "url": "http://localhost:3000",
+    //   "webRoot": "${workspaceFolder}/apps/demo"
+    // },
+    {
+      "name": "Launch Next.js (full stack)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/demo",
+      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "runtimeArgs": ["--inspect"],
+      "skipFiles": ["<node_internals>/**"],
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "killOnServerStop": true,
+        "pattern": "- Local:.+(https?://.+)",
+        "uriFormat": "%s",
+        "webRoot": "${workspaceFolder}/apps/demo"
+      },
       "presentation": {
         "hidden": false,
         "group": "2",
         "order": 2
-      }
-    },
-    {
-      "name": "Launch browser",
-      "type": "chrome",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/apps/demo",
-      "webRoot": "${workspaceFolder}/apps/demo",
-      "url": "http://localhost:3000/",
-      "internalConsoleOptions": "openOnSessionStart",
-      "sourceMaps": true,
-      "smartStep": true,
-      "presentation": {
-        "hidden": false,
-        "group": "2",
-        "order": 3
       }
     }
   ],
   "compounds": [
     {
       "name": "debug app",
-      "configurations": ["Launch api", "Launch app", "Launch browser"],
+      "configurations": ["Launch api", "Launch Next.js (full stack)"],
       "stopAll": true,
       "presentation": {
         "hidden": false,

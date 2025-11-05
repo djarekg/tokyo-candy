@@ -8,10 +8,10 @@
       "name": "root",
     },
     {
-      "path": "apps",
+      "path": "packages",
     },
     {
-      "path": "packages",
+      "path": "apps",
     },
   ],
   "settings": {
@@ -114,10 +114,9 @@
       "**/.output": true,
     },
     "search.exclude": {
-      "**/routeTree.gen.ts": true,
-      "**/.react-router": true,
-      "**/node_modules": true,
+      "**/.next": true,
       "**/.output": true,
+      "**/node_modules": true,
       "**/prisma/generated": true,
     },
 

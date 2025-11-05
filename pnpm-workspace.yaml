@@ -11,5 +11,6 @@ onlyBuiltDependencies:
 
 publicHoistPattern:
   - '@typescript/native'
+  - next
   - typescript
   - typegraphql-prisma
