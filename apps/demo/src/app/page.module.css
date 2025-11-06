@@ -1,0 +1,8 @@
+.root {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  color: var(--colorBrandForeground1);
+  font-size: var(--fontSizeHero1000);
+  font-weight: var(--fontWeightSemibold);
+}

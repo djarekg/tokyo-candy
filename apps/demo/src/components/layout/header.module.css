@@ -1,0 +1,6 @@
+.header {
+  display: flex;
+  align-items: center;
+  block-size: var(--layoutBlockSize);
+  padding-inline: var(--spacingHorizontalXL);
+}

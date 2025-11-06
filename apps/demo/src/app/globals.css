@@ -44,3 +44,10 @@ a {
     color-scheme: dark;
   }
 }
+
+.page {
+  --_block-size: calc(100vh - var(--layoutBlockSize) * 2);
+
+  min-block-size: var(--_block-size);
+  block-size: var(--_block-size);
+}

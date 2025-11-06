@@ -20,8 +20,10 @@
   },
   "scripts": {
     "db:clean": "pnpx prisma migrate reset --force",
+    "db:migrate": "pnpx prisma migrate dev",
+    "db:generate": "pnpx prisma generate",
     "db:seed": "dotenv -e .env -- node prisma/seed/seed.ts --tsconfig=tsconfig.json",
-    "db": "pnpm run db:clean && pnpx prisma generate && pnpx prisma db push && pnpm run db:seed",
+    "db": "pnpm run db:clean && pnpm run db:generate && pnpm run db:migrate && pnpm run db:seed",
     "build": "tsgo",
     "dev": "node --watch --env-file=.env --experimental-default-config-file --no-warnings=ExperimentalWarning src/server.ts"
   },

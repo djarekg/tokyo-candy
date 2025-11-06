@@ -6,8 +6,9 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   typedRoutes: true,
   experimental: {
-    swcPlugins: [['fluentui-next-appdir-directive', { paths: ['@griffel', '@fluentui'] }]],
     // optimizePackageImports: [''], // https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
+    swcPlugins: [['fluentui-next-appdir-directive', { paths: ['@griffel', '@fluentui'] }]],
+    turbopackFileSystemCacheForDev: true,
   },
 };
 

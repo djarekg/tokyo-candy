@@ -29,6 +29,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit",
+      "source.sortMembers": "explicit",
     },
     "editor.rulers": [100],
     "editor.overviewRulerBorder": true,
@@ -83,7 +84,7 @@
     "typescript.preferences.importModuleSpecifier": "non-relative",
     "typescript.preferences.importModuleSpecifierEnding": "minimal",
     // "typescript.tsdk": "node_modules/@typescript/native-preview/lib",
-    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.tsdk": "root/node_modules/typescript/lib",
     "typescript.reportStyleChecksAsWarnings": false,
     // "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview/lib",
     "typescript.autoClosingTags": true,
