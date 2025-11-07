@@ -11,12 +11,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "pnpx prisma generate",
+    "db:migrate": "pnpx prisma migrate dev",
+    "db:seed": "dotenv -e .env -- node prisma/seed/seed.ts --tsconfig=tsconfig.json",
+    "postinstall": "pnpm run db:generate"
   },
   "dependencies": {
     "@fluentui/react-components": "9.72.4",
     "@fluentui/react-icons": "2.0.313",
-    "@tc/api": "workspace:*",
+    "@prisma/client": "^6.19.0",
+    "@prisma/extension-accelerate": "2.0.2",
+    "@tc/auth": "workspace:*",
+    "dotenv": "^17.2.3",
     "fluentui-next-appdir-directive": "0.3.0",
     "next": "16.0.1",
     "next-auth": "5.0.0-beta.30",
@@ -27,10 +34,13 @@
     "zod": "4.1.12"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@prisma/adapter-pg": "^6.19.0",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "babel-plugin-react-compiler": "1.0.0"
+    "babel-plugin-react-compiler": "1.0.0",
+    "prisma": "^6.19.0"
   },
   "peerDependencies": {
     "typescript": "^5"

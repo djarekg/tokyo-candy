@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "paths": {
+      "#app/*": ["./src/*"],
+      "@tc/db": ["../db/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*", "../db/src/client", "../db/src/client.ts"],
+  "exclude": ["node_modules"]
+}

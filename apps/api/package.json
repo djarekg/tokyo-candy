@@ -25,7 +25,8 @@
     "db:seed": "dotenv -e .env -- node prisma/seed/seed.ts --tsconfig=tsconfig.json",
     "db": "pnpm run db:clean && pnpm run db:generate && pnpm run db:migrate && pnpm run db:seed",
     "build": "tsgo",
-    "dev": "node --watch --env-file=.env --experimental-default-config-file --no-warnings=ExperimentalWarning src/server.ts"
+    "dev": "node --watch --env-file=.env --experimental-default-config-file --no-warnings=ExperimentalWarning src/server.ts",
+    "postinstall": "pnpm run db:generate"
   },
   "dependencies": {
     "@koa/cors": "^5.0.0",

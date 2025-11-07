@@ -1,0 +1,35 @@
+{
+  "name": "@tc/auth",
+  "private": false,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "pnpm": "10.20.0"
+  },
+  "type": "module",
+  "imports": {
+    "#app/*": "./src/*"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./auth": {
+      "import": "./src/auth/auth.ts"
+    },
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsgo"
+  },
+  "dependencies": {
+    "@tc/db": "workspace:*",
+    "bcryptjs": "3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
