@@ -1,5 +1,6 @@
 import { compareHash } from '#app/crypto/hash';
 import type { AuthStatus } from '#app/types/auth-status.js';
+import prisma from '@tc/db/client';
 
 export type SigninArgs = {
   /**

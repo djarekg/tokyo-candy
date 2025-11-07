@@ -132,18 +132,12 @@ importers:
       '@fluentui/react-icons':
         specifier: 2.0.313
         version: 2.0.313(react@19.2.0)
-      '@prisma/client':
-        specifier: ^6.19.0
-        version: 6.19.0(prisma@6.19.0(typescript@5.9.3))(typescript@5.9.3)
-      '@prisma/extension-accelerate':
-        specifier: 2.0.2
-        version: 2.0.2(@prisma/client@6.19.0(prisma@6.19.0(typescript@5.9.3))(typescript@5.9.3))
       '@tc/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      dotenv:
-        specifier: ^17.2.3
-        version: 17.2.3
+      '@tc/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       fluentui-next-appdir-directive:
         specifier: 0.3.0
         version: 0.3.0
@@ -172,12 +166,6 @@ importers:
         specifier: 4.1.12
         version: 4.1.12
     devDependencies:
-      '@faker-js/faker':
-        specifier: ^10.1.0
-        version: 10.1.0
-      '@prisma/adapter-pg':
-        specifier: ^6.19.0
-        version: 6.19.0
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.0
@@ -190,9 +178,6 @@ importers:
       babel-plugin-react-compiler:
         specifier: 1.0.0
         version: 1.0.0
-      prisma:
-        specifier: ^6.19.0
-        version: 6.19.0(typescript@5.9.3)
 
   packages/auth:
     dependencies:
@@ -219,13 +204,34 @@ importers:
       '@prisma/client':
         specifier: ^6.18.0
         version: 6.19.0(prisma@6.19.0(typescript@5.9.3))(typescript@5.9.3)
+      '@prisma/extension-accelerate':
+        specifier: 2.0.2
+        version: 2.0.2(@prisma/client@6.19.0(prisma@6.19.0(typescript@5.9.3))(typescript@5.9.3))
+      bcryptjs:
+        specifier: 3.0.3
+        version: 3.0.3
+      dotenv:
+        specifier: ^17.2.3
+        version: 17.2.3
       typescript:
         specifier: ^5
         version: 5.9.3
     devDependencies:
+      '@faker-js/faker':
+        specifier: ^10.1.0
+        version: 10.1.0
+      '@prisma/adapter-pg':
+        specifier: ^6.18.0
+        version: 6.19.0
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.0
+      dotenv-cli:
+        specifier: ^11.0.0
+        version: 11.0.0
+      prisma:
+        specifier: ^6.18.0
+        version: 6.19.0(typescript@5.9.3)
 
 packages:
 

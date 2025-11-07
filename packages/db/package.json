@@ -1,0 +1,57 @@
+{
+  "name": "@tc/db",
+  "private": false,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "pnpm": "10.20.0"
+  },
+  "type": "module",
+  "imports": {
+    "#app/*": "./src/*",
+    "#app/generated/prisma/client/*": "./src/generated/prisma/client/*",
+    "#prisma/seed/*": "./prisma/seed/*"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./client": {
+      "import": "./src/client/index.ts"
+    },
+    "./constants": {
+      "import": "./src/constants/index.ts"
+    },
+    "./enums": {
+      "import": "./src/generated/prisma/enums/*"
+    },
+    "./models": {
+      "import": "./src/generated/prisma/models/*"
+    },
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "db:clean": "pnpx prisma migrate reset --force",
+    "db:migrate": "pnpx prisma migrate dev",
+    "db:generate": "pnpx prisma generate",
+    "db:seed": "dotenv -e .env -- node prisma/seed/seed.ts --tsconfig=tsconfig.json",
+    "db": "pnpm run db:clean && pnpm run db:generate && pnpm run db:migrate && pnpm run db:seed",
+    "postinstall": "pnpm run db:generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "@prisma/extension-accelerate": "2.0.2",
+    "bcryptjs": "3.0.3",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@prisma/adapter-pg": "^6.18.0",
+    "@types/node": "^24.10.0",
+    "dotenv-cli": "^11.0.0",
+    "prisma": "^6.18.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -4,7 +4,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
       "@/*": ["./src/*"],
-      "@tc/auth": ["../auth/src/index.ts"]
+      "@tc/auth": ["../../packages/auth/src/index.ts"],
+      "@tc/db": ["../../packages/db/src/index.ts"]
     }
   },
   "include": [
@@ -13,8 +14,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "prisma/seed/**/*"
+    "**/*.mts"
   ],
   "exclude": ["node_modules"]
 }
