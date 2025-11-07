@@ -1,5 +1,5 @@
-import { PrismaClient } from '../dist/generated';
 import { withAccelerate } from '@prisma/extension-accelerate';
+import { PrismaClient } from '../dist/generated';
 
 declare global {
   var prisma: PrismaClient | undefined;
