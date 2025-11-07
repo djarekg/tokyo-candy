@@ -1,4 +1,5 @@
 export type * from './aui-context.ts';
+export type * from './auth-status.ts';
 export type * from './customer-header-info.ts';
 export type * from './month-total.ts';
 export type * from './product-type-month-totals.ts';

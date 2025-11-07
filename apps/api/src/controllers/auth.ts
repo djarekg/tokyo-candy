@@ -1,6 +1,6 @@
+import * as auth from '#app/auth/auth.ts';
 import { prisma } from '#app/client/index.ts';
 import { TOKEN_SECRET } from '#app/config.ts';
-import { compareHash } from '#app/crypto/hash.ts';
 import { Role } from '#app/generated/prisma/enums.ts';
 import type { AuiContext } from '#app/types/index.ts';
 import jwt from 'jsonwebtoken';
@@ -22,37 +22,21 @@ export const getUser = async (ctx: AuiContext<{ username: string }>) => {
 
 export const signin = async (ctx: AuiContext<{ username: string; password: string }>) => {
   const { username, password } = ctx.request.body;
-  const user = await prisma.user.findFirst({
-    select: {
-      id: true,
-      userCredential: {
-        select: {
-          password: true,
-          role: true,
-        },
-      },
-    },
-    where: {
-      email: username,
-    },
-  });
 
-  if (!user) {
-    ctx.status = 404; // NOT FOUND
+  const { statusCode, userId, role } = await auth.signin({ username, password });
+
+  if (statusCode !== 200 || !userId) {
+    ctx.status = statusCode;
     return;
   }
 
-  // Validate password against stored hash
-  const hashPassword = user.userCredential?.password ?? '';
-  const isValid = compareHash(password, hashPassword);
-
-  if (isValid) {
+  if (statusCode === 200) {
     // Credentials are valid, so return a JWT
-    jwt.sign({ username }, TOKEN_SECRET, {
+    jwt.sign({ username }, TOKEN_SECRET!, {
       expiresIn: '1h',
     });
 
-    ctx.body = { userId: user.id, role: user.userCredential?.role ?? Role.USER };
+    ctx.body = { userId, role: role ?? Role.USER };
     return;
   }
 
@@ -60,7 +44,7 @@ export const signin = async (ctx: AuiContext<{ username: string; password: strin
 };
 
 export const signout = (ctx: Context) => {
-  jwt.sign({}, TOKEN_SECRET, {
+  jwt.sign({}, TOKEN_SECRET!, {
     expiresIn: '1s', // Expire the token immediately
   });
 

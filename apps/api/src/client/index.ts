@@ -1,6 +1,9 @@
+import type { SigninArgs } from '#app/auth/auth.ts';
+import * as auth from '#app/auth/auth.ts';
 import { PrismaClient } from '#app/generated/prisma/client.ts';
+import type { AuthStatus } from '#app/types/auth-status';
 import { PrismaPg } from '@prisma/adapter-pg';
-// import { PrismaClient } from '@prisma/client';
+
 /**
  * This is a HMR workaround since the module
  * responsible for exporting PrismaClient gets refreshed, which can result
@@ -24,13 +27,24 @@ const getPrisma = ({ connectionString }: getPrismaProps): PrismaClient => {
   return prisma;
 };
 
-/**
- * `PrismaClient` singleton.
- */
-export const prisma = getPrisma({ connectionString: `${process.env.DATABASE_URL}` });
+console.log('db connection;');
+console.log(process.env.DATABASE_URL);
+
+const prisma = getPrisma({ connectionString: `${process.env.DATABASE_URL}` });
 
 if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma;
 }
 
-// export const prisma = new PrismaClient();
+export type db = typeof prisma & {
+  auth: {
+    signin: (args: SigninArgs) => Promise<AuthStatus>;
+  };
+};
+
+const db: db = {
+  ...prisma,
+  auth,
+} as const;
+
+export { db, prisma };

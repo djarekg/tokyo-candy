@@ -8,6 +8,7 @@ import {
   createDOMRenderer,
   renderToStyleElements,
 } from '@fluentui/react-components';
+import { SessionProvider } from 'next-auth/react';
 import { useServerInsertedHTML } from 'next/navigation';
 import * as React from 'react';
 
@@ -26,7 +27,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <RendererProvider renderer={renderer}>
       <SSRProvider>
-        <FluentProvider theme={darkTheme}>{children}</FluentProvider>
+        <FluentProvider theme={darkTheme}>
+          <SessionProvider>{children}</SessionProvider>
+        </FluentProvider>
       </SSRProvider>
     </RendererProvider>
   );

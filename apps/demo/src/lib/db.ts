@@ -1,1 +1,3 @@
-export { prisma as db } from '@tc/api';
+import { db } from '@tc/api';
+
+export default db;
