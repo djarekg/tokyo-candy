@@ -1,16 +1,15 @@
 'use client';
 
-import { darkTheme } from '@/styles/theme';
 import {
+  createDOMRenderer,
   FluentProvider,
   RendererProvider,
-  SSRProvider,
-  createDOMRenderer,
   renderToStyleElements,
+  SSRProvider,
 } from '@fluentui/react-components';
-import { SessionProvider } from 'next-auth/react';
 import { useServerInsertedHTML } from 'next/navigation';
 import * as React from 'react';
+import { darkTheme } from '@/styles/theme';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [renderer] = React.useState(() => createDOMRenderer());
@@ -27,9 +26,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <RendererProvider renderer={renderer}>
       <SSRProvider>
-        <FluentProvider theme={darkTheme}>
-          <SessionProvider>{children}</SessionProvider>
-        </FluentProvider>
+        <FluentProvider theme={darkTheme}>{children}</FluentProvider>
       </SSRProvider>
     </RendererProvider>
   );

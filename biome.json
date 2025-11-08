@@ -1,0 +1,76 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "useImportExtensions": "off",
+        "noEmptyPattern": "off"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "off"
+      },
+      "a11y": {
+        "useButtonType": "off",
+        "useHtmlLang": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "tw", "tw.*"]
+          }
+        }
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "asNeeded",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto",
+      "indentStyle": "space",
+      "lineEnding": "lf"
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentWidth": 2
+    },
+    "parser": {
+      "allowTrailingCommas": true
+    }
+  },
+  "html": {
+    "formatter": {
+      "enabled": true,
+      "attributePosition": "multiline",
+      "bracketSameLine": true,
+      "indentStyle": "space",
+      "indentScriptAndStyle": true
+    }
+  }
+}
