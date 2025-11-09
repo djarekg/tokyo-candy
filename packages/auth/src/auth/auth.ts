@@ -1,12 +1,12 @@
+import prisma from '@tc/db/client';
 import { compareHash } from '#app/crypto/hash';
 import type { AuthStatus } from '#app/types/auth-status.js';
-import prisma from '@tc/db/client';
 
 export type SigninArgs = {
   /**
-   * The user's username (email).
+   * The user's email.
    */
-  username: string;
+  email: string;
   /**
    * The user's password.
    */
@@ -18,10 +18,12 @@ export type SigninArgs = {
  * @param {SigninArgs} args - The sign-in arguments containing username and password.
  * @returns {Promise<AuthStatus>} An object containing the status code and user data if successful.
  */
-export const signin = async ({ username, password }: SigninArgs): Promise<AuthStatus> => {
+export const signin = async ({ email, password }: SigninArgs): Promise<AuthStatus> => {
   const user = await prisma.user.findFirst({
     select: {
       id: true,
+      firstName: true,
+      lastName: true,
       userCredential: {
         select: {
           password: true,
@@ -30,7 +32,7 @@ export const signin = async ({ username, password }: SigninArgs): Promise<AuthSt
       },
     },
     where: {
-      email: username,
+      email,
     },
   });
 
@@ -48,6 +50,8 @@ export const signin = async ({ username, password }: SigninArgs): Promise<AuthSt
     return {
       statusCode: 200,
       userId: user.id,
+      roleId: user.userCredential?.role,
+      name: `${user.firstName} ${user.lastName}`,
     };
   }
 

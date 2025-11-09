@@ -1,4 +1,4 @@
-import type { Role } from '#app/generated/prisma/enums.js';
+import type { Role } from '@tc/db';
 
 export type AuthStatus = {
   /**
@@ -12,5 +12,11 @@ export type AuthStatus = {
   /**
    * The role of the authenticated user.
    */
-  role?: Role;
-};
+  roleId?: Role;
+  /**
+   * The name of the authenticated user.
+   */
+  name?: string;
+
+}
+

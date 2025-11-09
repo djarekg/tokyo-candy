@@ -1,25 +1,22 @@
 'use server';
 
-import { signIn } from '@/lib/auth-client';
-import { APIError } from 'better-auth/api';
+import { AuthError } from 'next-auth';
+import { signIn } from '@/auth';
 
 export async function authenticate(_prevState: string | undefined, formData: FormData) {
   try {
-    const email = formData.get('username')?.toString();
-    const password = formData.get('password')?.toString();
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    if (!email || !password) {
-      throw new APIError('BAD_REQUEST');
-    }
-
-    const {} = await signIn.email({
+    await signIn('credentials', {
       email,
       password,
+      redirectTo: '/', // For now, redirect to home on success
     });
   } catch (error) {
-    if (error instanceof APIError) {
-      switch (error.status) {
-        case 'BAD_REQUEST':
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
           return 'Invalid credentials.';
         default:
           return 'Something went wrong.';

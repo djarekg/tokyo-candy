@@ -36,7 +36,8 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 100
+    "lineWidth": 100,
+    "indentWidth": 2
   },
   "javascript": {
     "formatter": {
@@ -48,18 +49,13 @@
       "bracketSpacing": true,
       "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto",
-      "indentStyle": "space",
-      "lineEnding": "lf"
+      "attributePosition": "auto"
     },
     "parser": {
-      "unsafeParameterDecoratorsEnabled": true
+      "unsafeParameterDecoratorsEnabled": false
     }
   },
   "json": {
-    "formatter": {
-      "indentWidth": 2
-    },
     "parser": {
       "allowTrailingCommas": true
     }
@@ -69,7 +65,6 @@
       "enabled": true,
       "attributePosition": "multiline",
       "bracketSameLine": true,
-      "indentStyle": "space",
       "indentScriptAndStyle": true
     }
   }

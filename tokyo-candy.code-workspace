@@ -31,7 +31,8 @@
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
       "source.fixAll.biome": "explicit",
-      "source.organizeImports.biome": "explicit"
+      "source.organizeImports.biome": "explicit",
+      "source.removeUnusedImports": "explicit"
     },
     "editor.rulers": [100],
     "editor.overviewRulerBorder": true,
@@ -76,12 +77,12 @@
     "[yaml]": {
       "editor.defaultFormatter": "biomejs.biome"
     },
-    "[xml]": {
-      "editor.defaultFormatter": "redhat.vscode-xml"
-    },
+    // "[xml]": {
+    //   "editor.defaultFormatter": "redhat.vscode-xml"
+    // },
 
     // "typescript.experimental.useTsgo": true,
-    "typescript.format.semicolons": "insert",
+    // "typescript.format.semicolons": "insert",
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "javascript.preferences.importModuleSpecifierEnding": "minimal",
     "typescript.preferences.importModuleSpecifier": "non-relative",
@@ -90,8 +91,8 @@
     "typescript.tsdk": "root/node_modules/typescript/lib",
     "typescript.reportStyleChecksAsWarnings": false,
     // "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview/lib",
-    "typescript.autoClosingTags": true,
-    "typescript.preferences.autoImportFileExcludePatterns": [],
+    // "typescript.autoClosingTags": true,
+    // "typescript.preferences.autoImportFileExcludePatterns": [],
     "typescript.preferences.preferTypeOnlyAutoImports": true,
     "typescript.suggest.autoImports": true,
     "typescript.suggest.completeFunctionCalls": true,
@@ -100,12 +101,6 @@
     "html.format.indentInnerHtml": true,
     "html.format.maxPreserveNewLines": 1,
 
-    "files.watcherExclude": {
-      "**/routeTree.gen.ts": true
-    },
-    "files.readonlyInclude": {
-      "**/routeTree.gen.ts": true
-    },
     "files.exclude": {
       "**/.cache": true,
       "**/.git": true,
