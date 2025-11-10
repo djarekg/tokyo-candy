@@ -13,7 +13,7 @@ const Signin: FC<ComponentProps<'form'>> = () => {
       <button type='submit' aria-disabled={isPending}>
         Sign In
       </button>
-      z{errorMessage && <span>{errorMessage}</span>}
+      {errorMessage && <span>{errorMessage}</span>}
     </form>
   );
 };

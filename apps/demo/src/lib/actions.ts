@@ -1,7 +1,7 @@
 'use server';
 
 import { AuthError } from 'next-auth';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 
 export async function authenticate(_prevState: string | undefined, formData: FormData) {
   try {
@@ -24,4 +24,8 @@ export async function authenticate(_prevState: string | undefined, formData: For
     }
     throw error;
   }
+}
+
+export async function signOutUser() {
+  await signOut();
 }
