@@ -67,5 +67,10 @@
       "bracketSameLine": true,
       "indentScriptAndStyle": true
     }
+  },
+  "css": {
+    "formatter": {
+      "enabled": false
+    }
   }
 }

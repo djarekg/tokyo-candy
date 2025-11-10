@@ -3,6 +3,7 @@ import { Providers } from '@/app/providers';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import './globals.css';
+import '@/styles/colors.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

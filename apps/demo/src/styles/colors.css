@@ -1,0 +1,12 @@
+.colorBrandGradient {
+  background: linear-gradient(
+    to right,
+    var(--colorPaletteBerryBackground3) 10%,
+    var(--colorSecondaryForeground1) 50%,
+    var(--colorBrandForeground0) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: calc(100vh - calc(2 * var(--layoutBlockSize)));
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  inline-size: 25%;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.titleAction {
+  font-weight: 600;
+  text-align: center;
+}
+
+.titleBrand {
+  font-size: 1.6em;
+}
