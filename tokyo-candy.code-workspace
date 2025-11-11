@@ -1,18 +1,18 @@
 {
   "folders": [
     {
-      "path": ".vscode"
+      "path": ".vscode",
     },
     {
       "path": ".",
-      "name": "root"
+      "name": "root",
     },
     {
-      "path": "packages"
+      "path": "packages",
     },
     {
-      "path": "apps"
-    }
+      "path": "apps",
+    },
   ],
   "settings": {
     "bun.runtime": "${userHome}\\.bun\\bin\\bun",
@@ -28,13 +28,10 @@
     "editor.detectIndentation": false,
     "editor.formatOnSave": false,
     "editor.lightbulb.enabled": "on",
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      // "source.fixAll": "explicit",
-      "quickfix.biome": "explicit",
-      "source.organizeImports.biome": "explicit"
-      // "source.organizeImports": "explicit"
-      // "source.removeUnusedImports": "explicit"
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
     },
     "editor.rulers": [100],
     "editor.overviewRulerBorder": true,
@@ -51,47 +48,47 @@
 
     "[css]": {
       "editor.defaultFormatter": "vscode.css-language-features",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
     "[json]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[html]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[prisma]": {
       "editor.defaultFormatter": "Prisma.prisma",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
     "[typescript]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[javascript]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[javascriptreact]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[yaml]": {
-      "editor.defaultFormatter": "biomejs.biome",
-      "editor.formatOnSave": true
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
     },
     "[xml]": {
       "editor.defaultFormatter": "redhat.vscode-xml",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
 
     // "typescript.experimental.useTsgo": true,
@@ -121,28 +118,29 @@
       "**/.hg": true,
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
-      "**/node_modules": true,
-      "**/.output": true
+      "**/node_modules": false,
+      "**/.output": true,
     },
     "search.exclude": {
       "**/.next": true,
       "**/.output": true,
       "**/node_modules": true,
       "**/prisma/generated": true,
-      "bun.lock": true
+      "bun.lock": true,
     },
 
     // Ensure enough terminal history is preserved when running tests.
     "terminal.integrated.scrollback": 10000,
 
-    "workbench.editor.labelFormat": "medium"
+    "workbench.editor.labelFormat": "medium",
   },
   "extensions": {
     "recommendations": [
       "Prisma.prisma",
       "cweijan.vscode-postgresql-client2",
-      "biomejs.biome",
-      "oven.bun-vscode"
-    ]
-  }
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "oven.bun-vscode",
+    ],
+  },
 }

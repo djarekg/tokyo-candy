@@ -6,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}\\apps\\demo",
-      "program": "${cwd}\\node_modules\\next\\dist\\bin\\next",
+      "program": "${workspaceFolder}\\apps\\demo\\node_modules\\next\\dist\\bin\\next",
       "runtimeArgs": ["--inspect"],
       "serverReadyAction": {
         "action": "debugWithEdge",
