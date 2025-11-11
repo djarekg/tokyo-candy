@@ -48,7 +48,8 @@
     "files.insertFinalNewline": true,
 
     "[css]": {
-      "editor.defaultFormatter": "vscode.css-language-features"
+      "editor.defaultFormatter": "vscode.css-language-features",
+      "editor.formatOnSave": true
     },
     "[json]": {
       "editor.defaultFormatter": "biomejs.biome",

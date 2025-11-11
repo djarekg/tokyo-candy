@@ -1,13 +1,12 @@
 import type { FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type CandyFilledProps = {
-  fill?: string;
+type CandyProps = {
   strokeColor1?: string;
   strokeColor2?: string;
 } & IconProps;
 
-const CandyFilledIcon: FC<CandyFilledProps> = ({
+const CandyIcon: FC<CandyProps> = ({
   className,
   size = 24,
   strokeColor1 = '#175FD9',
@@ -15,15 +14,15 @@ const CandyFilledIcon: FC<CandyFilledProps> = ({
 }) => {
   return (
     <svg
-      data-icon='candy-filled-icon'
+      data-icon='candy-icon'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 64 64'
-      className={`app-icon app-candy-filled-icon ${className}`}
+      className={`app-icon app-candy-icon ${className}`}
       fill='currentColor'
       width={`${size}px`}
       height={`${size}px`}
     >
-      <title>Candy Filled UI</title>
+      <title>Candy UI</title>
       <path
         fill='#cccbcb'
         d='M55.4 57.18c.581-1.333.887-2.813 1.163-4.236c.306-1.56.158-3.995 1.431-5.089c.807-.695 2.61-.639 3.606-1.029c1.279-.506 2.312-1.778 2.152-3.21c-.838-7.78-12.849-3.169-17.312-4.901a2 2 0 0 0-.373-.106c-.139-1.283-2.134-2.255-3.351-.978c-2.213 2.317-.499 4.963 1.104 7.02c2.099 2.681 2.187 5.332 2.299 8.612c.087 2.471.301 6.071 2.724 7.462c2.989 1.707 5.451-.985 6.557-3.543'
@@ -64,4 +63,4 @@ const CandyFilledIcon: FC<CandyFilledProps> = ({
   );
 };
 
-export default CandyFilledIcon;
+export default CandyIcon;
