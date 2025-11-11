@@ -30,9 +30,9 @@
     "editor.lightbulb.enabled": "on",
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "explicit",
-      "source.organizeImports.biome": "explicit",
-      "source.removeUnusedImports": "explicit"
+      "source.fixAll": "explicit",
+      "quickfix.biome": "explicit",
+      "source.organizeImports.biome": "explicit"
     },
     "editor.rulers": [100],
     "editor.overviewRulerBorder": true,
