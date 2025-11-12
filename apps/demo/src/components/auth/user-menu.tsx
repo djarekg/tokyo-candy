@@ -2,6 +2,7 @@
 
 import { signOutUser } from '@/lib/actions';
 import {
+  makeStyles,
   Menu,
   MenuButton,
   MenuItemLink,
@@ -26,14 +27,22 @@ const PersonIcon = bundleIcon(PersonFilled, PersonRegular);
 const SettingsIcon = bundleIcon(PersonSettingsFilled, PersonSettingsRegular);
 const SignOutIcon = bundleIcon(SignOutFilled, SignOutRegular);
 
+const useStyles = makeStyles({
+  menuButton: {
+    outline: 'none', // Everytime a menu item is clicked, a focus ring appears around the button. this removes it
+  },
+});
+
 const UserMenu: FC<UserMenuProps> = ({ userId }) => {
+  const classes = useStyles();
+
   return (
     <Menu hasIcons>
       <MenuTrigger disableButtonEnhancement>
         <MenuButton
+          className={classes.menuButton}
           appearance="transparent"
           size="large"
-          autoFocus={false}
           icon={<PersonIcon />}
         />
       </MenuTrigger>
