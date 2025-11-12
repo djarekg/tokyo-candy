@@ -47,7 +47,7 @@
     "files.insertFinalNewline": true,
 
     "[css]": {
-      "editor.defaultFormatter": "vscode.css-language-features",
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
     },
     "[json]": {
@@ -118,7 +118,7 @@
       "**/.hg": true,
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
-      "**/node_modules": false,
+      "**/node_modules": true,
       "**/.output": true,
     },
     "search.exclude": {

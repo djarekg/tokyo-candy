@@ -1,3 +1,5 @@
+'use cache';
+
 import type { FC } from 'react';
 import type { IconProps } from './icon-props';
 
@@ -14,8 +16,7 @@ const ClothIcon: FC<ClothProps> = ({ className, size = 24 }) => {
       className={className}
       fill="currentColor"
       width={`${size}px`}
-      height={`${size}px`}
-    >
+      height={`${size}px`}>
       <title>Cloth UI</title>
       <path
         fill="currentColor"

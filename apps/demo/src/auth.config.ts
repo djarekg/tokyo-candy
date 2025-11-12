@@ -9,6 +9,9 @@ export const authConfig = {
     authorized({ auth }) {
       return !!auth?.user;
     },
+    async session({ session, user, token }) {
+      return session;
+    },
     jwt({ token, trigger, session }) {
       if (trigger === 'update') token.name = session.user.name;
       return token;

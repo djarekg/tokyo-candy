@@ -1,10 +1,10 @@
+import { color, layout } from '@/styles/constants';
 import {
   createDarkTheme,
   createLightTheme,
   tokens as fluentuiTokens,
   type Theme,
 } from '@fluentui/react-components';
-import { color, layout } from '@/styles/constants';
 
 type AppTheme = Theme & {
   layoutBlockSize: string;
@@ -28,7 +28,7 @@ const lightTheme: AppTheme = {
 const darkTheme: AppTheme = {
   ...createDarkTheme(color.brand.palette),
   layoutBlockSize: layout.blockSize,
-  colorNeutralBackground1: color.neutral.background1,
+  // colorNeutralBackground1: color.neutral.background1,
   colorBrandForeground0: color.brand.foreground0,
   colorSecondaryForeground1: color.secondary.foreground1,
   colorSecondaryForeground2: color.secondary.foreground2,

@@ -1,9 +1,7 @@
 import { Providers } from '@/app/providers';
 import Footer from '@/components/layout/footer';
-import Header from '@/components/layout/header';
 import '@/styles/colors.css';
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -23,9 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <Suspense>
-            <Header />
-          </Suspense>
           <main>{children}</main>
           <Footer />
         </Providers>

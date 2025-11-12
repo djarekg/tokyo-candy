@@ -17,7 +17,7 @@ const Header: FC<ComponentProps<'header'>> = async () => {
       <Link href="/">
         <CandyLollipopIcon size={48} />
       </Link>
-      <UserMenu />
+      <UserMenu userId={session.user.id} />
     </header>
   );
 };
