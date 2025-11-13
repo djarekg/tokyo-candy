@@ -13,6 +13,7 @@ type CandyLollipopProps = {
 const CandyLollipopIcon: FC<CandyLollipopProps> = async ({
   className,
   size = 24,
+  // color1 = 'hsla(270, 51%, 32%, 0.2)',
   color1 = color.brand.foreground0,
   color2 = color.secondary.foreground1,
   color3 = color.berry.background3,
