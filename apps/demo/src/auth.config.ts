@@ -9,7 +9,8 @@ export const authConfig = {
     authorized({ auth }) {
       return !!auth?.user;
     },
-    async session({ session, user, token }) {
+    async session({ session, token }) {
+      session.user.id = token.sub!; // Ensure user ID is included in session
       return session;
     },
     jwt({ token, trigger, session }) {
