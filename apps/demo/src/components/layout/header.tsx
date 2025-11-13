@@ -15,7 +15,10 @@ const Header: FC<ComponentProps<'header'>> = async () => {
   return (
     <header className={styles.header}>
       <Link href="/">
-        <CandyLollipopIcon size={48} />
+        <CandyLollipopIcon
+          size={48}
+          className={styles.link}
+        />
       </Link>
       <UserMenu userId={session.user.id} />
     </header>
