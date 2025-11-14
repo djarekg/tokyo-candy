@@ -27,7 +27,7 @@ const CandyLollipopIcon: FC<CandyLollipopProps> = async ({
       fill="currentColor"
       width={`${size}px`}
       height={`${size}px`}>
-      <title>Candy Lollipop UI</title>
+      <title>Candy Lollipop</title>
       <path
         fill={color1}
         d="m28.01586,14.01022c0,7.77209 -6.23711,14.01022 -14.00793,14.01022c-7.77082,0 -14.00793,-6.23813 -14.00793,-14.01022c0,-7.77209 6.23711,-14.01022 14.00793,-14.01022s14.00793,6.23813 14.00793,14.01022"

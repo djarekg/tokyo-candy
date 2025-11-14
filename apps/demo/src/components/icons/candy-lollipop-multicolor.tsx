@@ -21,7 +21,7 @@ const CandyLollipopMulticolorIcon: FC<CandyLollipopMulticolorProps> = ({
       fill="currentColor"
       width={`${size}px`}
       height={`${size}px`}>
-      <title>Candy Lollipop Multicolor UI</title>
+      <title>Candy Lollipop Multicolor</title>
       <g fill="none">
         <path
           fill="#f3c07b"

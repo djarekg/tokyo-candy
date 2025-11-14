@@ -20,7 +20,7 @@ body {
 
 main {
   margin-block-start: var(--layoutBlockSize);
-  block-size: calc(100% - var(--layoutBlockSize) * 2);
+  block-size: calc(100vh - var(--layoutBlockSize) * 2);
 }
 
 /* html {
