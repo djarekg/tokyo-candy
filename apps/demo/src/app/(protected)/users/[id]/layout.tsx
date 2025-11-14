@@ -2,6 +2,7 @@
 
 import AvatarIcon from '@/components/icons/avatar';
 import prisma from '@tc/db/client';
+import styles from './layout.module.css';
 
 const UserLayout = async ({
   children,
@@ -23,8 +24,8 @@ const UserLayout = async ({
 
   return (
     <div>
-      <header>
-        <AvatarIcon size={48} />
+      <header className={styles.header}>
+        <AvatarIcon size={28} />
         {user.firstName} {user.lastName}
       </header>
       {children}
