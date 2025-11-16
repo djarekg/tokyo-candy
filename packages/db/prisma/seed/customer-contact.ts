@@ -1,4 +1,5 @@
 import type { PrismaClient } from '#app/generated/prisma/client.ts';
+import type { CustomerContactCreateManyInput } from '#app/index';
 import { faker } from './faker-context.ts';
 import { getState } from './state.ts';
 
@@ -20,30 +21,30 @@ export const createCustomerContacts = async (prisma: PrismaClient) => {
   }
 
   const customerIds = customers.map(customer => customer.id);
+  const customerContacts: CustomerContactCreateManyInput[] = [];
 
   for (let i = 0, len = customerIds.length; i < len; i++) {
     const customerId = customerIds[i];
-
     const { randomStateId } = await getState(prisma);
 
     const createCustomerContact = () =>
-      prisma.customerContact.create({
-        data: {
-          id: faker.string.uuid(),
-          customerId,
-          firstName: faker.person.firstName(),
-          lastName: faker.person.lastName(),
-          email: faker.internet.email(),
-          streetAddress: faker.location.streetAddress(),
-          streetAddress2: faker.location.secondaryAddress(),
-          city: faker.location.city(),
-          stateId: randomStateId(),
-          zip: faker.location.zipCode({ format: '#####' }),
-          phone: faker.phone.number({ style: 'national' }),
-          isActive: faker.datatype.boolean(0.8),
-        },
+      customerContacts.push({
+        id: faker.string.uuid(),
+        customerId,
+        firstName: faker.person.firstName(),
+        lastName: faker.person.lastName(),
+        email: faker.internet.email(),
+        streetAddress: faker.location.streetAddress(),
+        streetAddress2: faker.location.secondaryAddress(),
+        city: faker.location.city(),
+        stateId: randomStateId(),
+        zip: faker.location.zipCode({ format: '#####' }),
+        phone: faker.phone.number({ style: 'national' }),
+        isActive: faker.datatype.boolean(0.8),
       });
 
-    Array.from({ length: 10 }).forEach(async () => await createCustomerContact());
+    Array.from({ length: 10 }).forEach(() => createCustomerContact());
   }
+
+  await prisma.customerContact.createMany({ data: customerContacts });
 };

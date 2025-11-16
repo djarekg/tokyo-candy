@@ -1,11 +1,8 @@
 {
   "extends": "../../tsconfig.node.json",
   "compilerOptions": {
-    // "allowImportingTsExtensions": true,
     "experimentalDecorators": true,
-    // "rewriteRelativeImportExtensions": false,
-    // "erasableSyntaxOnly": true,
-    "types": ["node"],
+    "types": ["bun"],
     "baseUrl": "src",
     "paths": {
       "#app/*": ["./*"],

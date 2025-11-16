@@ -1,7 +1,10 @@
 import { type PrismaClient, Role } from '#app/generated/prisma/client.ts';
+import type { ProductSaleCreateManyInput } from '#app/generated/prisma/internal/prismaNamespaceBrowser';
 
 export const createProductSales = async (prisma: PrismaClient) => {
   console.log('Seeding ProductSale...');
+
+  const newProductSales: ProductSaleCreateManyInput[] = [];
 
   const createProductSales = async () => {
     const customerIds = (await prisma.customer.findMany()).map(({ id }) => id);
@@ -27,17 +30,16 @@ export const createProductSales = async (prisma: PrismaClient) => {
       const userId = salesUserIds[Math.floor(Math.random() * salesUserIds.length)];
       const quantity = Math.floor(Math.random() * 10) + 1;
 
-      await prisma.productSale.create({
-        data: {
-          productId,
-          customerId,
-          userId,
-          quantity,
-          price,
-        },
+      newProductSales.push({
+        productId,
+        customerId,
+        userId,
+        quantity,
+        price,
       });
     }
   };
 
   await createProductSales();
+  await prisma.productSale.createMany({ data: newProductSales });
 };
