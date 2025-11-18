@@ -19,9 +19,9 @@ import {
   SignOutFilled,
   SignOutRegular,
 } from '@fluentui/react-icons';
-import type { ComponentProps, FC } from 'react';
+import type { FC, PropsWithoutRef } from 'react';
 
-type UserMenuProps = { userId: string } & ComponentProps<'menu'>;
+type UserMenuProps = { userId: string };
 
 const PersonIcon = bundleIcon(PersonFilled, PersonRegular);
 const SettingsIcon = bundleIcon(PersonSettingsFilled, PersonSettingsRegular);
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const UserMenu: FC<UserMenuProps> = ({ userId }) => {
+const UserMenu: FC<PropsWithoutRef<UserMenuProps>> = ({ userId }) => {
   const classes = useStyles();
 
   return (

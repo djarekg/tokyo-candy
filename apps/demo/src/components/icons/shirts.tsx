@@ -1,11 +1,12 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type ShirtsProps = {
-  strokeWidth?: number;
-} & IconProps;
+type ShirtsProps = ComponentProps<'svg'> &
+  IconProps & {
+    strokeWidth?: number;
+  };
 
 const ShirtsIcon: FC<ShirtsProps> = ({ className, size = 24, strokeWidth = 1.5 }) => {
   return (

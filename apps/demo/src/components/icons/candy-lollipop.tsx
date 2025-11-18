@@ -1,14 +1,15 @@
 'use cache';
 
 import { color } from '@/styles/constants';
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type CandyLollipopProps = {
-  color1?: string;
-  color2?: string;
-  color3?: string;
-} & IconProps;
+type CandyLollipopProps = ComponentProps<'svg'> &
+  IconProps & {
+    color1?: string;
+    color2?: string;
+    color3?: string;
+  };
 
 const CandyLollipopIcon: FC<CandyLollipopProps> = async ({
   className,

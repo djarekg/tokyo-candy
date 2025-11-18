@@ -1,13 +1,14 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type GhostFilledProps = {
-  fill?: string;
-  strokeWidth?: number;
-  strokeColor?: string;
-} & IconProps;
+type GhostFilledProps = ComponentProps<'svg'> &
+  IconProps & {
+    fill?: string;
+    strokeWidth?: number;
+    strokeColor?: string;
+  };
 
 const GhostFilledIcon: FC<GhostFilledProps> = ({
   className,

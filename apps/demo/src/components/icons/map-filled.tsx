@@ -1,13 +1,14 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type MapFilledProps = {
-  fill?: string;
-  strokeWidth?: number;
-  strokeColor?: string;
-} & IconProps;
+type MapFilledProps = ComponentProps<'svg'> &
+  IconProps & {
+    fill?: string;
+    strokeWidth?: number;
+    strokeColor?: string;
+  };
 
 const MapFilledIcon: FC<MapFilledProps> = ({
   className,

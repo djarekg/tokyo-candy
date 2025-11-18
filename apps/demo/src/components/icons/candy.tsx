@@ -1,12 +1,13 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type CandyProps = {
-  strokeColor1?: string;
-  strokeColor2?: string;
-} & IconProps;
+type CandyProps = ComponentProps<'svg'> &
+  IconProps & {
+    strokeColor1?: string;
+    strokeColor2?: string;
+  };
 
 const CandyIcon: FC<CandyProps> = ({
   className,

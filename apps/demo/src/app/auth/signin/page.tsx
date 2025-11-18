@@ -1,11 +1,11 @@
 'use client';
 
-import { Button, Field, Input } from '@fluentui/react-components';
-import { type ComponentProps, type FC, useActionState } from 'react';
 import { authenticate } from '@/lib/actions';
+import { Button, Field, Input } from '@fluentui/react-components';
+import { useActionState } from 'react';
 import styles from './page.module.css';
 
-const Signin: FC<ComponentProps<'form'>> = () => {
+const Signin = () => {
   const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);
 
   return (
@@ -14,14 +14,28 @@ const Signin: FC<ComponentProps<'form'>> = () => {
         <span className={styles.titleAction}>Sign in to&nbsp;</span>
         <span className={`${styles.titleBrand} colorBrandGradient`}>Tokyo Candy</span>
       </div>
-      <form action={formAction} className={styles.form}>
+      <form
+        action={formAction}
+        className={styles.form}>
         <Field required>
-          <Input name='email' placeholder='Email' size='large' />
+          <Input
+            name="email"
+            placeholder="Email"
+            size="large"
+          />
         </Field>
         <Field required>
-          <Input name='password' type='password' placeholder='Password' size='large' />
+          <Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            size="large"
+          />
         </Field>
-        <Button type='submit' aria-disabled={isPending} size='large'>
+        <Button
+          type="submit"
+          aria-disabled={isPending}
+          size="large">
           Sign In
         </Button>
         {errorMessage && <span>{errorMessage}</span>}

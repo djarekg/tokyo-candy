@@ -33,6 +33,7 @@ export const color = {
   secondary: {
     foreground1: 'hsla(216, 100%, 58%, 1.00)',
     foreground2: 'hsla(216, 80%, 48%, 1.00)',
+    shadow8: 'hsla(270, 51%, 32%, 0.6)', // this is not available as a CSS variable in Fluent UI
   },
 };
 

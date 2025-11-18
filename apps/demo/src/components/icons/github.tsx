@@ -1,9 +1,9 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props.js';
 
-type GitHubProps = {} & IconProps;
+type GitHubProps = ComponentProps<'svg'> & IconProps;
 
 const GitHubIcon: FC<GitHubProps> = ({ className, size = 24 }) => {
   'use memo';

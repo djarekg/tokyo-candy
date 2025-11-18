@@ -1,12 +1,13 @@
 'use cache';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 
-type AvatarProps = {
-  fill1?: string;
-  fill2?: string;
-} & IconProps;
+type AvatarProps = ComponentProps<'svg'> &
+  IconProps & {
+    fill1?: string;
+    fill2?: string;
+  };
 
 const AvatarIcon: FC<AvatarProps> = async ({ className, size = 24, fill = 'currentColor' }) => {
   return (

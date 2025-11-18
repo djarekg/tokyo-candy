@@ -1,34 +1,27 @@
 'use server';
 
 import AvatarIcon from '@/components/icons/avatar';
-import prisma from '@tc/db/client';
+import { getUserById } from '@/lib/api/user';
 import styles from './layout.module.css';
 
-const UserLayout = async ({
-  children,
-  params,
-}: {
+type UserLayout = {
   children: React.ReactNode;
   params: Promise<{ id: string }>;
-}) => {
-  const { id } = await params;
-  const user = await prisma.user.findFirst({
-    where: {
-      id,
-    },
-  });
+};
 
-  if (!user) {
-    throw new Error('User not found');
-  }
+const UserLayout = async ({ children, params }: UserLayout) => {
+  const { id } = await params;
+  const user = await getUserById(id);
+
+  if (!user) return null;
 
   return (
-    <div>
+    <div className={styles.container}>
       <header className={styles.header}>
         <AvatarIcon size={28} />
         {user.firstName} {user.lastName}
       </header>
-      {children}
+      <div className={styles.wrapper}>{children}</div>
     </div>
   );
 };
