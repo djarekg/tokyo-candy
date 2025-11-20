@@ -1,4 +1,4 @@
-'use cache';
+'use client';
 
 import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
@@ -16,6 +16,7 @@ const ContactIcon: FC<ContactProps> = ({
   size = 24,
   strokeWidth = 1.5,
   strokeColor = '#222',
+  ...props
 }) => {
   return (
     <svg
@@ -25,7 +26,8 @@ const ContactIcon: FC<ContactProps> = ({
       className={`app-icon app-contact-icon ${className}`}
       fill="currentColor"
       width={`${size}px`}
-      height={`${size}px`}>
+      height={`${size}px`}
+      {...props}>
       <title>Contact</title>
       <path
         fill={fill}

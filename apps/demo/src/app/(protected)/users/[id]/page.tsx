@@ -1,24 +1,16 @@
-'use server';
-
 import Loader from '@/components/loader/loader';
-import UserTabs from '@/components/user/user-tabs';
-import { getUserById } from '@/lib/api/user';
+import User from '@/components/user/user';
 import { Suspense } from 'react';
 import styles from './page.module.css';
 
-const User = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = await params;
-  const user = await getUserById(id);
-
-  if (!user) return null;
-
+const UserPage = ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className={styles.page}>
       <Suspense fallback={<Loader />}>
-        <UserTabs user={user} />
+        <User params={params} />
       </Suspense>
     </div>
   );
 };
 
-export default User;
+export default UserPage;

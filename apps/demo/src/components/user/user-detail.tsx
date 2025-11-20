@@ -1,9 +1,12 @@
 'use client';
 
+import FormCard from '@/components/form-card/form-card';
 import FormInput from '@/components/form-input/form-input';
+import ContactIcon from '@/components/icons/contact';
+import { tokens } from '@/styles/theme';
 import { makeStyles } from '@fluentui/react-components';
 import type { UserModel } from '@tc/db';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, FC } from 'react';
 
 type UserDetailProps = ComponentProps<'form'> & {
   user: UserModel | null;
@@ -17,31 +20,43 @@ const useStyles = makeStyles({
   },
 });
 
-const UserDetail = ({ className, user, ...props }: UserDetailProps) => {
+const UserDetail: FC<UserDetailProps> = ({ className, user, ...props }) => {
   const classes = useStyles();
 
   return (
     <form
       className={`${classes.form} ${className}`}
       {...props}>
-      <FormInput
-        name="firstName"
-        value={user?.firstName}
-        placeholder="First name"
-        required
-      />
-      <FormInput
-        name="lastName"
-        value={user?.lastName}
-        placeholder="Last name"
-        required
-      />
-      <FormInput
-        name="email"
-        value={user?.email}
-        placeholder="Email"
-        required
-      />
+      <FormCard
+        title="Contact information"
+        layout="grid"
+        icon={
+          <ContactIcon
+            size={36}
+            strokeWidth={1}
+            strokeColor={tokens.colorNeutralCardBackground}
+            fill={tokens.colorNeutralForegroundOnBrand}
+          />
+        }>
+        <FormInput
+          name="firstName"
+          value={user?.firstName}
+          placeholder="First name"
+          required
+        />
+        <FormInput
+          name="lastName"
+          value={user?.lastName}
+          placeholder="Last name"
+          required
+        />
+        <FormInput
+          name="email"
+          value={user?.email}
+          placeholder="Email"
+          required
+        />
+      </FormCard>
     </form>
   );
 };

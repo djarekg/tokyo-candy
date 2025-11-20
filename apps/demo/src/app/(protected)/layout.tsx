@@ -7,7 +7,8 @@ const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
       <Suspense>
         <Header />
       </Suspense>
-      <Suspense>{children}</Suspense>
+      {/* <Suspense>{children}</Suspense> */}
+      {children}
     </>
   );
 };

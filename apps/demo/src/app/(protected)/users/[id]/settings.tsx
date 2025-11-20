@@ -1,3 +1,5 @@
+'use servier';
+
 type Settings = {
   params: { id: string };
 };

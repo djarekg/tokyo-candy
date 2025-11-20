@@ -1,5 +1,6 @@
 'use client';
 
+import { tokens } from '@/styles/theme';
 import {
   makeStyles,
   Tab,
@@ -23,7 +24,8 @@ const useStyles = makeStyles({
   },
   panels: {
     inlineSize: '100%',
-    paddingInline: '16px',
+    paddingInline: tokens.spacingHorizontalM,
+    paddingBlock: tokens.spacingVerticalL,
   },
 });
 
