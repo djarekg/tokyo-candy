@@ -11,6 +11,7 @@
 
 .link {
   border-radius: 50%;
+  box-shadow: 0 0 6px 5px hsla(270, 51%, 32%, 0.6);
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease;
