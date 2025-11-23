@@ -1,12 +1,21 @@
 .colorBrandGradient {
   background: linear-gradient(
-    to right,
-    var(--colorPaletteBerryBackground3) 10%,
-    var(--colorSecondaryForeground1) 50%,
-    var(--colorBrandForeground0) 80%
-  );
+      to right,
+      var(--colorPaletteBerryBackground3) 10%,
+      var(--colorSecondaryForeground1) 50%,
+      var(--colorBrandForeground0) 80%,
+      var(--colorPaletteBerryBackground3) 100%
+    ) -100%/
+    200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
 }
