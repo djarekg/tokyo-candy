@@ -24,15 +24,15 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.72.7",
-    "@fluentui/react-icons": "2.0.313",
+    "@fluentui/react-icons": "2.0.315",
     "@tc/core": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@types/bun": "1.3.2",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2"
+    "@types/bun": "1.3.3",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3"
   },
   "peerDependencies": {
     "typescript": "^5"
