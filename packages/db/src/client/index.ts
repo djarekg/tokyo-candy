@@ -1,10 +1,8 @@
-import { PrismaClient } from '#app/generated/prisma/client.ts';
-import { withAccelerate } from '@prisma/extension-accelerate';
+// Example: Direct TCP + adapter (v7)
+import { PrismaClient } from '#app/generated/prisma/client';
+import { PrismaPostgresAdapter } from '@prisma/adapter-ppg';
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+const adapter = new PrismaPostgresAdapter({ connectionString: process.env.DATABASE_URL! });
+const prisma = new PrismaClient({ adapter });
 
-const globalForPrisma = global as unknown as { prisma: typeof prisma };
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
-
-export default prisma as unknown as PrismaClient;
+export default prisma;

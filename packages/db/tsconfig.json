@@ -6,7 +6,7 @@
     "baseUrl": "src",
     "paths": {
       "#app/*": ["./*"],
-      "#app/generated/prisma/client/*": ["./generated/prisma/client/*"],
+      "#app/generated/prisma/client": ["./generated/prisma/client.ts"],
       "#prisma/seed/*": ["../prisma/seed/*"]
     }
   },

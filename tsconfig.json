@@ -8,7 +8,16 @@
       "path": "./apps/demo"
     },
     {
-      "path": "./apps/api"
+      "path": "./packages/auth"
+    },
+    {
+      "path": "./packages/components"
+    },
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/db"
     }
   ]
 }
