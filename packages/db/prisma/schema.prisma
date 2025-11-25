@@ -96,6 +96,7 @@ model User {
   jobTitle       String
   isActive       Boolean         @default(false)
   dateCreated    DateTime        @default(now())
+  dateUpdated    DateTime?       @updatedAt
   state          State           @relation(fields: [stateId], references: [id])
   productSales   ProductSale[]
   userCredential UserCredential?
@@ -120,14 +121,14 @@ model Customer {
   phone           String
   isActive        Boolean           @default(false)
   dateCreated     DateTime          @default(now())
-  dateUpdated     DateTime          @updatedAt
+  dateUpdated     DateTime?         @updatedAt
   CustomerContact CustomerContact[]
   state           State             @relation(fields: [stateId], references: [id])
   productSales    ProductSale[]
 }
 
 model CustomerContact {
-  id             String   @id @default(uuid())
+  id             String    @id @default(uuid())
   customerId     String
   firstName      String
   lastName       String
@@ -138,11 +139,11 @@ model CustomerContact {
   stateId        String
   zip            String
   phone          String
-  isActive       Boolean  @default(false)
-  dateCreated    DateTime @default(now())
-  dateUpdated    DateTime @updatedAt
-  customer       Customer @relation(fields: [customerId], references: [id])
-  state          State    @relation(fields: [stateId], references: [id])
+  isActive       Boolean   @default(false)
+  dateCreated    DateTime  @default(now())
+  dateUpdated    DateTime? @updatedAt
+  customer       Customer  @relation(fields: [customerId], references: [id])
+  state          State     @relation(fields: [stateId], references: [id])
 }
 
 model Product {
@@ -161,34 +162,34 @@ model Product {
 }
 
 model ProductColor {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   productId   String
   color       Color
-  dateCreated DateTime @default(now())
-  dateUpdated DateTime @updatedAt
-  product     Product  @relation(fields: [productId], references: [id])
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
 }
 
 model ProductInventory {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   productId   String
   size        Size
   quantity    Int
-  dateCreated DateTime @default(now())
-  dateUpdated DateTime @updatedAt
-  product     Product  @relation(fields: [productId], references: [id])
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
 }
 
 model ProductSale {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   productId   String
   customerId  String
   userId      String
   quantity    Int
-  price       Decimal  @db.Decimal(10, 2)
-  dateCreated DateTime @default(now())
-  dateUpdated DateTime @updatedAt
-  product     Product  @relation(fields: [productId], references: [id])
-  customer    Customer @relation(fields: [customerId], references: [id])
-  user        User     @relation(fields: [userId], references: [id])
+  price       Decimal   @db.Decimal(10, 2)
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
 }
