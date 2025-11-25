@@ -1,13 +1,40 @@
 {
-  "name": "components",
+  "name": "@tc/components",
+  "private": false,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "packageManager": "bun@1.3.3",
+  "engines": {
+    "bun": "1.3.3"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "bun@1.3.3"
+  "type": "module",
+  "imports": {
+    "#app/*": "./src/*"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./command-palette": {
+      "import": "./src/command-palette/command-palette.tsx"
+    },
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsgo"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "^9.72.7",
+    "@fluentui/react-icons": "2.0.313",
+    "@tc/core": "workspace:*",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.2",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }

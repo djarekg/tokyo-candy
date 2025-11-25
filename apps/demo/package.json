@@ -16,6 +16,8 @@
     "@fluentui/react-components": "^9.72.6",
     "@fluentui/react-icons": "2.0.313",
     "@tc/auth": "workspace:*",
+    "@tc/components": "workspace:*",
+    "@tc/core": "workspace:*",
     "@tc/db": "workspace:*",
     "fluentui-next-appdir-directive": "0.3.0",
     "next": "16.0.1",

@@ -5,6 +5,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@tc/auth": ["../../packages/auth/src/index.ts"],
+      "@tc/components": ["../../packages/components/src/index.ts"],
+      "@tc/core": ["../../packages/core/src/index.ts"],
       "@tc/db": ["../../packages/db/src/index.ts"]
     }
   },
