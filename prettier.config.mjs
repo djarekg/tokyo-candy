@@ -21,5 +21,11 @@ export default {
         singleQuote: false,
       },
     },
+    {
+      files: ['*.json', '*.jsonc'],
+      options: {
+        trailingComma: 'none',
+      },
+    },
   ],
 };

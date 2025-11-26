@@ -15,6 +15,15 @@
     "./command-palette": {
       "import": "./src/command-palette/command-palette.tsx"
     },
+    "./form": {
+      "import": "./src/form/index.tsx"
+    },
+    "./icons/*": {
+      "import": "./src/icons/*.tsx"
+    },
+    "./loader": {
+      "import": "./src/loader/loader.tsx"
+    },
     ".": {
       "import": "./src/index.ts"
     }

@@ -30,3 +30,4 @@ block_comment_end = */
 
 [*.json]
 max_line_length = 80
+

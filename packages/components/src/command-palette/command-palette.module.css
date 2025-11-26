@@ -1,3 +1,27 @@
-.container {
-  position: absolute;
+:root {
+  --_padding-inline: 0.5rem 1rem;
+}
+
+.dialogSurface {
+  inline-size: 40%;
+  padding: 0;
+
+  header {
+    border-bottom: 1px solid var(--colorNeutralStroke1);
+
+    input {
+      inline-size: 100%;
+      font-size: var(--fontSizeBase500);
+      padding: var(--_padding-inline);
+      border: none;
+      border-start-start-radius: var(--borderRadiusXLarge);
+      border-start-end-radius: var(--borderRadiusXLarge);
+      outline: none;
+      background: transparent;
+    }
+  }
+}
+
+.commandList {
+  padding: var(--_padding-inline);
 }

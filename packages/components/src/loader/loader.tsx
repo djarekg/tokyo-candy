@@ -1,6 +1,7 @@
 'use client';
 
 import { makeStyles, Spinner } from '@fluentui/react-components';
+import type { FC } from 'react';
 
 const useStyles = makeStyles({
   container: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Loader = () => {
+const Loader: FC = () => {
   const classes = useStyles();
 
   return (

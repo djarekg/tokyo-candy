@@ -12,6 +12,9 @@
     "./tools/*.js": {
       "import": "./src/tools/*.js"
     },
+    "./hooks": {
+      "import": "./src/hooks/index.ts"
+    },
     "./utils": {
       "import": "./src/utils/index.ts"
     },

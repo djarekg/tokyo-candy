@@ -4,24 +4,11 @@ import { SearchResultType } from '@/types/search-result-type';
 import prisma from '@tc/db/client';
 import { cacheLife } from 'next/cache';
 
-export const getUserById = async (id: string) => {
-  'use cache';
-  cacheLife('hours');
-
-  const user = await prisma.user.findFirst({
-    where: {
-      id,
-    },
-  });
-
-  return user;
-};
-
-export const searchUsers = async (value: string) => {
+export const searchCustomerContacts = async (value: string) => {
   'use cache';
   cacheLife('minutes');
 
-  const users = await prisma.user.findMany({
+  const customContacts = await prisma.customerContact.findMany({
     where: {
       OR: [
         {
@@ -31,6 +18,16 @@ export const searchUsers = async (value: string) => {
         },
         {
           lastName: {
+            contains: value,
+          },
+        },
+        {
+          email: {
+            contains: value,
+          },
+        },
+        {
+          phone: {
             contains: value,
           },
         },
@@ -49,10 +46,10 @@ export const searchUsers = async (value: string) => {
     },
   });
 
-  return users.map(user => ({
-    id: user.id,
-    type: SearchResultType.user,
-    name: `${user.firstName} ${user.lastName}`,
-    description: `${user.city}, ${user.state.code}`,
+  return customContacts.map(contact => ({
+    id: contact.id,
+    type: SearchResultType.customerContact,
+    name: `${contact.firstName} ${contact.lastName}`,
+    description: `${contact.city}, ${contact.state.code}`,
   }));
 };

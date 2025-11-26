@@ -1,5 +1,4 @@
 import Header from '@/components/layout/header';
-import CommandPalette from '@tc/components/command-palette';
 import { Suspense } from 'react';
 
 const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
@@ -10,7 +9,6 @@ const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
       </Suspense>
       {/* <Suspense>{children}</Suspense> */}
       {children}
-      <CommandPalette />
     </>
   );
 };

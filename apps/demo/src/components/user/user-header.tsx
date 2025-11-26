@@ -1,7 +1,7 @@
 'use server';
 
-import AvatarIcon from '@/components/icons/avatar';
 import { getUserById } from '@/lib/api/user';
+import AvatarIcon from '@tc/components/icons/avatar';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 import styles from './user-header.module.css';
 
