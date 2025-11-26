@@ -1,8 +1,13 @@
-// Example: Direct TCP + adapter (v7)
 import { PrismaClient } from '#app/generated/prisma/client';
-import { PrismaPostgresAdapter } from '@prisma/adapter-ppg';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
-const adapter = new PrismaPostgresAdapter({ connectionString: process.env.DATABASE_URL! });
-const prisma = new PrismaClient({ adapter });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
+
+export const prisma = new PrismaClient({
+  adapter,
+  log: process.env.NODE_ENV === 'production' ? ['error'] : ['query', 'error'],
+});
 
 export default prisma;

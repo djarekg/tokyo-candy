@@ -9,10 +9,10 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-  // engineType = "client"
-  runtime  = "bun"
+  provider   = "prisma-client"
+  output     = "../src/generated/prisma"
+  engineType = "client" // No Rust
+  runtime    = "bun"
 }
 
 enum Gender {
