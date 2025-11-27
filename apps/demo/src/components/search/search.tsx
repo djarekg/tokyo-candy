@@ -17,7 +17,7 @@ const Search = () => {
 
   const handleClick = () => setIsOpen(true);
 
-  const handleSearch = (value: string) => {
+  const handleSearch = (value: string | undefined) => {
     setSearchValue(value);
   };
 
@@ -45,6 +45,8 @@ const Search = () => {
       };
 
       performSearch();
+    } else {
+      setItems(undefined);
     }
   }, [searchValue]);
 

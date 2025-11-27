@@ -12,7 +12,7 @@ import {
 } from 'react';
 
 type CommandInputProps = ComponentPropsWithoutRef<'input'> & {
-  onSearch?: (value: string) => void;
+  onSearch?: (value: string | undefined) => void;
 };
 
 const MIN_SEARCH_LENGTH = 2;
@@ -63,11 +63,9 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
   };
 
   useEffect(() => {
-    if (isNull(debouncedValue) || debouncedValue.length < MIN_SEARCH_LENGTH) {
-      return;
-    }
+    const valid = !isNull(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
 
-    onSearch?.(debouncedValue);
+    onSearch?.(valid ? debouncedValue : undefined);
   }, [debouncedValue]);
 
   return (

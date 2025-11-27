@@ -29,7 +29,7 @@ type CommandPaletteProps = {
   items?: CommandItem[];
   open?: boolean;
   onClose?: () => void;
-  onSearch?: (value: string) => void;
+  onSearch?: (value: string | undefined) => void;
 };
 
 const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
