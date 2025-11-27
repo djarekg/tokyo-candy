@@ -22,3 +22,9 @@
     transform: scale(1.03);
   }
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}

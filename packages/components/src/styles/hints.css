@@ -1,0 +1,9 @@
+.tc-shortcut-hint {
+  background: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  padding: 0 0.4rem;
+  font-size: inherit;
+  font-weight: 500;
+  box-shadow: var(--shadow2);
+}

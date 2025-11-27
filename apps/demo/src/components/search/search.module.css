@@ -1,0 +1,20 @@
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 200px;
+  block-size: 34px;
+  padding-inline: 0.5rem;
+  border-radius: var(--borderRadiusMedium);
+  background: var(--colorNeutralBackground6);
+}
+
+.placeholder {
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+}
+
+.shortcutHint {
+  font-size: 0.65rem;
+}

@@ -12,6 +12,7 @@ export const searchProducts = async (value: string) => {
     where: {
       name: {
         contains: value,
+        mode: 'insensitive',
       },
     },
     select: {

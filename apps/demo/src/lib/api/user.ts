@@ -27,11 +27,13 @@ export const searchUsers = async (value: string) => {
         {
           firstName: {
             contains: value,
+            mode: 'insensitive',
           },
         },
         {
           lastName: {
             contains: value,
+            mode: 'insensitive',
           },
         },
       ],

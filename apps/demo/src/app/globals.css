@@ -1,3 +1,5 @@
+@import "@tc/components/styles/index.css";
+
 :root {
   --_background: #ffffff;
   --_foreground: #171717;

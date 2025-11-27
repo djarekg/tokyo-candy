@@ -15,6 +15,9 @@
     "./command-palette": {
       "import": "./src/command-palette/command-palette.tsx"
     },
+    "./command-palette/index": {
+      "import": "./src/command-palette/index.ts"
+    },
     "./form": {
       "import": "./src/form/index.tsx"
     },
@@ -23,6 +26,9 @@
     },
     "./loader": {
       "import": "./src/loader/loader.tsx"
+    },
+    "./styles/index.css": {
+      "import": "./src/styles/index.css"
     },
     ".": {
       "import": "./src/index.ts"

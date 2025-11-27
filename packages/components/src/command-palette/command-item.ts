@@ -1,8 +1,11 @@
-import type { ReactNode } from 'react';
+import type { FluentIcon } from '@fluentui/react-icons';
 
 export type CommandItem = {
   key: string;
   label: string;
   href: string;
-  icon: ReactNode;
+  filledIcon: FluentIcon;
+  regularIcon: FluentIcon;
+  // Icon: ReturnType<typeof bundleIcon>;
+  // icon: ComponentType<SVGProps<SVGSVGElement>>;
 };

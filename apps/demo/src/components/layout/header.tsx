@@ -21,8 +21,10 @@ const Header: FC<ComponentProps<'header'>> = async () => {
           className={styles.link}
         />
       </Link>
-      <Search />
-      <UserMenu userId={session.user.id} />
+      <div className={styles.actions}>
+        <Search />
+        <UserMenu userId={session.user.id} />
+      </div>
     </header>
   );
 };

@@ -18,10 +18,21 @@ type CommandInputProps = ComponentPropsWithoutRef<'input'> & {
 const MIN_SEARCH_LENGTH = 2;
 
 const useStyles = makeStyles({
+  input: {
+    inlineSize: '100%',
+    fontSize: 'var(--fontSizeBase400)',
+    padding: 'var(--_padding-inline)',
+    border: 'none',
+    borderStartStartRadius: 'var(--borderRadiusXLarge)',
+    borderStartEndRadius: 'var(--borderRadiusXLarge)',
+    outline: 'none',
+    background: 'transparent',
+  },
+
   shortcutHint: {
     position: 'absolute',
     insetInlineEnd: '10px',
-    insetBlockStart: '20px',
+    insetBlockStart: '16px',
     transform: 'translateY(-50%)',
     fontSize: 'var(--fontSizeBase200)',
     color: 'var(--colorNeutralForeground1)',
@@ -62,8 +73,9 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
   return (
     <>
       <input
-        autoFocus={true}
         placeholder="Let's search for something interesting..."
+        autoFocus={true}
+        className={classes.input}
         onInput={handleInput}
         {...props}
       />

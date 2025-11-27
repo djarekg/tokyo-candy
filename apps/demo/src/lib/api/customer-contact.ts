@@ -14,21 +14,25 @@ export const searchCustomerContacts = async (value: string) => {
         {
           firstName: {
             contains: value,
+            mode: 'insensitive',
           },
         },
         {
           lastName: {
             contains: value,
+            mode: 'insensitive',
           },
         },
         {
           email: {
             contains: value,
+            mode: 'insensitive',
           },
         },
         {
           phone: {
             contains: value,
+            mode: 'insensitive',
           },
         },
       ],
