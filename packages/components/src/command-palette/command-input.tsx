@@ -12,7 +12,7 @@ import {
 } from 'react';
 
 type CommandInputProps = ComponentPropsWithoutRef<'input'> & {
-  onSearch?: (value: string | undefined) => void;
+  onSearch: (value: string | undefined) => void;
 };
 
 const MIN_SEARCH_LENGTH = 2;
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     background: 'transparent',
   },
 
-  shortcutHint: {
+  shortcutHintContainer: {
     position: 'absolute',
     insetInlineEnd: '10px',
     insetBlockStart: '16px',
@@ -39,19 +39,15 @@ const useStyles = makeStyles({
     WebkitUserSelect: 'none',
     MozUserSelect: 'none',
     userSelect: 'none',
-
-    '& > kbd': {
-      background: 'var(--colorNeutralBackground1)',
-      border: '1px solid var(--colorNeutralStroke1)',
-      borderRadius: 'var(--borderRadiusMedium)',
-      padding: '0.1rem 0.4rem',
-      fontSize: 'inherit',
-      fontWeight: 500,
-      boxShadow: 'var(--shadow2)',
-    },
   },
 });
 
+/**
+ * Command Input component for the command palette. Displays an input field and
+ * handles search input with debouncing.
+ *
+ * @param {CommandInputProps} props - The component props.
+ */
 const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
   const classes = useStyles();
   const [searchValue, setSearchValue] = useState('');
@@ -64,8 +60,7 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
 
   useEffect(() => {
     const valid = !isNull(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
-
-    onSearch?.(valid ? debouncedValue : undefined);
+    onSearch(valid ? debouncedValue : undefined);
   }, [debouncedValue]);
 
   return (
@@ -77,8 +72,8 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
         onInput={handleInput}
         {...props}
       />
-      <span className={classes.shortcutHint}>
-        <kbd>esc</kbd>
+      <span className={classes.shortcutHintContainer}>
+        <kbd className="tc-shortcut-hint">esc</kbd>
       </span>
     </>
   );

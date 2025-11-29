@@ -1,12 +1,15 @@
 'use client';
 
-import { Link, List, ListItem, makeStyles, type ComponentProps } from '@fluentui/react-components';
+import { Link, List, ListItem, makeStyles } from '@fluentui/react-components';
 import { bundleIcon } from '@fluentui/react-icons';
 import { isEmpty } from '@tc/core/utils';
-import type { FC } from 'react';
-import type { CommandItem } from './command-item.js';
+import { lazy, type FC } from 'react';
+import type { CommandItem } from './command-item';
+
+const Loader = lazy(() => import('#app/loader/loader'));
 
 type CommandListProps = {
+  loading?: boolean;
   items: CommandItem[];
 };
 
@@ -21,6 +24,9 @@ const useStyles = makeStyles({
     // fontWeight: 'var(--fontWeightSemibold)',
     color: 'var(--colorNeutralForeground3)',
     padding: '1rem',
+  },
+  loader: {
+    blockSize: '200px',
   },
   list: {
     marginBlock: `${LIST_MARGIN_BLOCK}px`,
@@ -46,8 +52,17 @@ const useStyles = makeStyles({
   },
 });
 
-const CommandList: FC<ComponentProps<CommandListProps>> = ({ items }) => {
+/**
+ * Command List component to display search results or loading state.
+ *
+ * @param {CommandListProps} props - The component props.
+ */
+const CommandList: FC<CommandListProps> = ({ loading, items }) => {
   const classes = useStyles();
+
+  if (loading) {
+    return <Loader blockSize="200px" />;
+  }
 
   if (isEmpty(items)) {
     return <div className={classes.noRecords}>Search has no results</div>;

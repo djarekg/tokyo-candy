@@ -1,5 +1,6 @@
 'use server';
 
+import type { SearchResult } from '@tc/db';
 import { cacheLife } from 'next/cache';
 import { searchCustomers } from './customer';
 import { searchCustomerContacts } from './customer-contact';
@@ -23,7 +24,7 @@ export const getSearch = async (value: string) => {
     searchProducts(value),
   ]);
 
-  const results = [...users, ...customers, ...customerContacts, ...products];
+  const results: SearchResult[] = [...users, ...customers, ...customerContacts, ...products];
 
   return results.length ? results : null;
 };

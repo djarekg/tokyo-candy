@@ -6,6 +6,4 @@ export type CommandItem = {
   href: string;
   filledIcon: FluentIcon;
   regularIcon: FluentIcon;
-  // Icon: ReturnType<typeof bundleIcon>;
-  // icon: ComponentType<SVGProps<SVGSVGElement>>;
 };

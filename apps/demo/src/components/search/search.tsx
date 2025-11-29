@@ -6,55 +6,55 @@ import { SearchResultType } from '@/types/search-result-type';
 import CommandPalette from '@tc/components/command-palette';
 import type { CommandItem } from '@tc/components/command-palette/index';
 import { isNullOrEmpty } from '@tc/core';
-import { useEffect, useState } from 'react';
+import type { SearchResult } from '@tc/db';
+import { useEffect, useEffectEvent, useState } from 'react';
 import { searchResultMap } from './search-result-map';
 import styles from './search.module.css';
+
+// Create command palette items from search results
+const createItems = (results: SearchResult[] | null): CommandItem[] | undefined => {
+  if (!results) {
+    return undefined;
+  }
+
+  return results.map(({ id, name, type }) => {
+    const { href, filledIcon, regularIcon } = searchResultMap[type as SearchResultType];
+
+    return {
+      key: id,
+      label: name,
+      href: `${href}/${id}`,
+      filledIcon: filledIcon,
+      regularIcon: regularIcon,
+    };
+  });
+};
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [items, setItems] = useState<CommandItem[] | undefined>();
 
-  const handleClick = () => setIsOpen(true);
-
-  const handleSearch = (value: string | undefined) => {
-    setSearchValue(value);
-  };
+  // Perform search when search value changes. If the search value is empty, clear the items.
+  const performSearch = useEffectEvent(async (value: string | undefined) => {
+    if (isNullOrEmpty(value)) {
+      setItems(undefined);
+    } else {
+      const results = await getSearch(value);
+      const items = createItems(results);
+      setItems(items);
+    }
+  });
 
   useEffect(() => {
-    if (!isNullOrEmpty(searchValue)) {
-      const performSearch = async () => {
-        const results = await getSearch(searchValue!);
-
-        // Build items from results and mapping
-        const items: CommandItem[] | undefined = results
-          ? results.map(({ id, name, type }) => {
-              const { href, filledIcon, regularIcon } = searchResultMap[type as SearchResultType];
-
-              return {
-                key: id,
-                label: name,
-                href: `${href}/${id}`,
-                filledIcon: filledIcon,
-                regularIcon: regularIcon,
-              };
-            })
-          : undefined;
-
-        setItems(items);
-      };
-
-      performSearch();
-    } else {
-      setItems(undefined);
-    }
+    performSearch(searchValue);
   }, [searchValue]);
 
   return (
     <>
       <div
         className={styles.input}
-        onClick={handleClick}>
+        onClick={() => setIsOpen(true)}>
         <span className={styles.placeholder}>Search...</span>
         <span className={`${styles.shortcutHint} tc-shortcut-hint`}>Ctrl+K</span>
       </div>
@@ -62,7 +62,7 @@ const Search = () => {
         open={isOpen}
         defaultItems={defaultItems}
         items={items}
-        onSearch={handleSearch}
+        onSearch={value => setSearchValue(value)}
         onClose={() => setIsOpen(false)}
       />
     </>

@@ -26,6 +26,9 @@
     "./models": {
       "import": "./src/generated/prisma/models/*"
     },
+    "./types": {
+      "import": "./src/types/index.ts"
+    },
     ".": {
       "import": "./src/index.ts"
     }

@@ -1,6 +1,7 @@
 'use server';
 
 import { SearchResultType } from '@/types/search-result-type';
+import type { SearchResult } from '@tc/db';
 import prisma from '@tc/db/client';
 import { cacheLife } from 'next/cache';
 
@@ -55,5 +56,5 @@ export const searchCustomerContacts = async (value: string) => {
     type: SearchResultType.customerContact,
     name: `${contact.firstName} ${contact.lastName}`,
     description: `${contact.city}, ${contact.state.code}`,
-  }));
+  })) satisfies SearchResult[];
 };

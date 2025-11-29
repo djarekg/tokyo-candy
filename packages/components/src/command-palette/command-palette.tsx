@@ -8,21 +8,11 @@ import {
   DialogTitle,
   type DialogOpenChangeData,
 } from '@fluentui/react-components';
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useEffectEvent,
-  useState,
-  type FC,
-  type PropsWithoutRef,
-} from 'react';
+import { useEffect, useEffectEvent, useState, type FC, type PropsWithoutRef } from 'react';
 import CommandInput from './command-input';
 import type { CommandItem } from './command-item';
 import CommandList from './command-list';
 import styles from './command-palette.module.css';
-
-const Loader = lazy(() => import('@tc/components/loader'));
 
 type CommandPaletteProps = {
   defaultItems?: CommandItem[];
@@ -33,6 +23,12 @@ type CommandPaletteProps = {
   onSearch?: (value: string | undefined) => void;
 };
 
+/**
+ * Command Palette component that provides a searchable interface for executing commands
+ * and displaying results.
+ *
+ * @param {CommandPaletteProps} props - The component props.
+ */
 const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   defaultItems = [],
   items,
@@ -43,10 +39,7 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [displayItems, setDisplayItems] = useState<CommandItem[]>(defaultItems);
-
-  const handleOpenChange = (_: any, { open }: DialogOpenChangeData) => {
-    setIsOpen(open);
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   // Trap keyboard shortcuts to open the command palette
   const onKeydown = useEffectEvent((e: KeyboardEvent) => {
@@ -56,14 +49,33 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
     }
   });
 
+  const handleOpenChange = (_: any, { open }: DialogOpenChangeData) => {
+    setIsOpen(open);
+  };
+
+  // If we're searching then set loading state.
+  const handleSearch = (value: string | undefined) => {
+    if (value !== undefined) {
+      setIsLoading(true);
+    }
+    onSearch?.(value);
+  };
+
+  // Add/remove `tc-backdrop-visible` class on body when dialog opens/closes.
   useEffect(() => {
+    const cleanup = () => {
+      document.body.classList.remove('tc-backdrop-visible');
+    };
+
     if (isOpen) {
       onOpen?.();
       document.body.classList.add('tc-backdrop-visible');
     } else {
       onClose?.();
-      document.body.classList.remove('tc-backdrop-visible');
+      cleanup();
     }
+
+    return cleanup;
   }, [isOpen]);
 
   useEffect(() => {
@@ -78,13 +90,9 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
     return () => window.removeEventListener('keydown', onKeydown);
   }, []);
 
-  // Update displayed items with the default unless items is not undefined/null
   useEffect(() => {
-    if (items) {
-      setDisplayItems(items);
-    } else {
-      setDisplayItems(defaultItems);
-    }
+    setDisplayItems(items ?? defaultItems);
+    setIsLoading(false);
   }, [defaultItems, items]);
 
   return (
@@ -103,13 +111,14 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
           }}>
           <DialogTitle>
             <header>
-              <CommandInput onSearch={onSearch} />
+              <CommandInput onSearch={handleSearch} />
             </header>
           </DialogTitle>
           <DialogContent className={styles.dialogContent}>
-            <Suspense fallback={<Loader />}>
-              <CommandList items={displayItems} />
-            </Suspense>
+            <CommandList
+              loading={isLoading}
+              items={displayItems}
+            />
           </DialogContent>
         </DialogBody>
       </DialogSurface>
