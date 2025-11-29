@@ -10,6 +10,9 @@ type CommandListProps = {
   items: CommandItem[];
 };
 
+const LIST_MARGIN_BLOCK = 10;
+const LINK_BLOCK_SIZE = 40;
+
 const useStyles = makeStyles({
   noRecords: {
     display: 'grid',
@@ -20,18 +23,15 @@ const useStyles = makeStyles({
     padding: '1rem',
   },
   list: {
-    marginBlock: '0.7em',
-  },
-  listItem: {
-    boxSizing: 'border-box',
-    paddingInline: '1px',
+    marginBlock: `${LIST_MARGIN_BLOCK}px`,
+    maxBlockSize: `calc(${LINK_BLOCK_SIZE}px * 6 - 6px)`,
   },
   link: {
     display: 'flex',
     alignItems: 'center',
     gap: '0.7rem',
     inlineSize: 'calc(100% - 1rem)',
-    blockSize: '40px',
+    blockSize: `${LINK_BLOCK_SIZE}px`,
     paddingInline: '0.5rem',
     fontSize: 'var(--fontSizeBas300)',
     textDecoration: 'none',
@@ -64,8 +64,7 @@ const CommandList: FC<ComponentProps<CommandListProps>> = ({ items }) => {
           <ListItem
             key={key}
             value={key}
-            aria-label={label}
-            className={classes.listItem}>
+            aria-label={label}>
             <Link
               role="gridcell"
               className={classes.link}

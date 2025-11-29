@@ -28,6 +28,7 @@ type CommandPaletteProps = {
   defaultItems?: CommandItem[];
   items?: CommandItem[];
   open?: boolean;
+  onOpen?: () => void;
   onClose?: () => void;
   onSearch?: (value: string | undefined) => void;
 };
@@ -36,6 +37,7 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   defaultItems = [],
   items,
   open,
+  onOpen,
   onClose,
   onSearch,
 }) => {
@@ -44,7 +46,6 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
 
   const handleOpenChange = (_: any, { open }: DialogOpenChangeData) => {
     setIsOpen(open);
-    !open && onClose?.();
   };
 
   // Trap keyboard shortcuts to open the command palette
@@ -54,6 +55,16 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
       setIsOpen(prev => !prev);
     }
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      onOpen?.();
+      document.body.classList.add('tc-backdrop-visible');
+    } else {
+      onClose?.();
+      document.body.classList.remove('tc-backdrop-visible');
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (open !== undefined) {
@@ -83,13 +94,19 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
       <DialogSurface
         className={styles.dialogSurface}
         style={{ padding: 0 }}>
-        <DialogBody style={{ gap: 0 }}>
+        <DialogBody
+          style={{
+            rowGap: '2px',
+            columnGap: 0,
+            paddingInlineEnd: '2px',
+            marginBlockEnd: '6px',
+          }}>
           <DialogTitle>
             <header>
               <CommandInput onSearch={onSearch} />
             </header>
           </DialogTitle>
-          <DialogContent style={{ padding: 0 }}>
+          <DialogContent className={styles.dialogContent}>
             <Suspense fallback={<Loader />}>
               <CommandList items={displayItems} />
             </Suspense>
