@@ -1,5 +1,3 @@
-'use cache';
-
 import type { ComponentProps, FC } from 'react';
 import type { IconProps } from './icon-props';
 

@@ -7,10 +7,10 @@ import {
   renderToStyleElements,
   SSRProvider,
 } from '@fluentui/react-components';
-import { useServerInsertedHTML } from 'next/navigation';
+import { darkTheme } from '@tc/components/styles';
 import { SessionProvider } from 'next-auth/react';
+import { useServerInsertedHTML } from 'next/navigation';
 import * as React from 'react';
-import { darkTheme } from '@/styles/theme';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [renderer] = React.useState(() => createDOMRenderer());

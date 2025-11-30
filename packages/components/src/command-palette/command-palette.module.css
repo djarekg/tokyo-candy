@@ -34,6 +34,41 @@
   }
 }
 
-.commandList {
-  padding: var(--_padding-inline);
+.shortcutHints,
+.footer {
+  display: flex;
+  gap: 4px;
+  inline-size: 100%;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.shortcutHints {
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.shortcutHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.2rem;
+}
+
+.shortcutText {
+  font-size: 0.75rem;
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground3);
+}
+
+.shortcutIconFlipped {
+  transform: scaleY(-1);
+}
+
+.footerPoweredBy {
+  margin-block-start: 2px;
+  font-size: 0.675rem;
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground3);
 }

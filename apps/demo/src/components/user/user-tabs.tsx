@@ -1,6 +1,5 @@
 'use client';
 
-import { tokens } from '@/styles/theme';
 import {
   makeStyles,
   Tab,
@@ -8,6 +7,7 @@ import {
   type SelectTabData,
   type TabValue,
 } from '@fluentui/react-components';
+import { tokens } from '@tc/components/styles';
 import type { UserModel } from '@tc/db';
 import { Activity, lazy, useState, type FC, type PropsWithoutRef } from 'react';
 

@@ -1,10 +1,10 @@
-import { color, layout } from '@/styles/constants';
 import {
   createDarkTheme,
   createLightTheme,
   tokens as fluentuiTokens,
   type Theme,
 } from '@fluentui/react-components';
+import { color, layout } from './constants';
 
 type AppTheme = Theme & {
   layoutBlockSize: string;

@@ -1,7 +1,9 @@
 'use client';
 
+import { ArrowDownIcon } from '#app/icons';
 import {
   Dialog,
+  DialogActions,
   DialogBody,
   DialogContent,
   DialogSurface,
@@ -70,14 +72,16 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
 
   // Add/remove `tc-backdrop-visible` class on body when dialog opens/closes.
   useEffect(() => {
+    const element = document.querySelector<HTMLElement>('.fui-FluentProvider');
+
     const cleanup = () => {
-      document.body.classList.remove('tc-backdrop-visible');
+      element?.classList.remove('tc-backdrop-visible');
       onClose?.();
     };
 
     if (isOpen) {
       onOpen?.();
-      document.body.classList.add('tc-backdrop-visible');
+      element?.classList.add('tc-backdrop-visible');
     } else {
       cleanup();
     }
@@ -129,6 +133,31 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
               />
             </Suspense>
           </DialogContent>
+          <div className={styles.shortcutHints}>
+            <span className={`${styles.shortcutHint} tc-shortcut-hint`}>
+              <ArrowDownIcon
+                size={14}
+                fill="colorNeutralForeground3"
+              />
+            </span>
+            <span className={styles.shortcutText}>Move down</span>
+            <span
+              className={`${styles.shortcutHint} tc-shortcut-hint`}
+              style={{ marginLeft: '8px' }}>
+              <ArrowDownIcon
+                size={14}
+                className={styles.shortcutIconFlipped}
+                fill="colorNeutralForeground3"
+              />
+            </span>
+            <span className={styles.shortcutText}>Move up</span>
+          </div>
+          <DialogActions>
+            <footer className={styles.footer}>
+              <div className={styles.footerPoweredBy}>Powered by</div>
+              <span className="colorBrandGradient">Tokyo Candy</span>
+            </footer>
+          </DialogActions>
         </DialogBody>
       </DialogSurface>
     </Dialog>

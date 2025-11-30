@@ -1,0 +1,16 @@
+export { default as ArrowDownIcon } from './arrow-down';
+export { default as AvatarIcon } from './avatar';
+export { default as CandyIcon } from './candy';
+export { default as CandyCaneIcon } from './candy-cane';
+export { default as CandyLollipopIcon } from './candy-lollipop';
+export { default as CandyLollipopMulticolorIcon } from './candy-lollipop-multicolor';
+export { default as ClothIcon } from './cloth';
+export { default as ContactIcon } from './contact';
+export { default as ContactFilledIcon } from './contact-filled';
+export { default as GhostIcon } from './ghost';
+export { default as GhostFilledIcon } from './ghost-filled';
+export { default as GithubIcon } from './github';
+export { default as MapIcon } from './map';
+export { default as MapFilledIcon } from './map-filled';
+export { default as ShirtIcon } from './shirt';
+export { default as ShirtsIcon } from './shirts';

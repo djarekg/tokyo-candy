@@ -1,9 +1,9 @@
 'use client';
 
-import { tokens } from '@/styles/theme';
 import { makeStyles } from '@fluentui/react-components';
 import { FormCard, FormInput } from '@tc/components/form';
-import ContactIcon from '@tc/components/icons/contact';
+import { ContactIcon } from '@tc/components/icons';
+import { tokens } from '@tc/components/styles';
 import type { UserModel } from '@tc/db';
 import type { ComponentProps, FC } from 'react';
 

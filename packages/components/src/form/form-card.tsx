@@ -1,6 +1,6 @@
 'use client';
 
-import { tokens } from '@/styles/theme';
+import { tokens } from '#app/styles/theme';
 import { makeStyles } from '@fluentui/react-components';
 import type { CSSProperties, FC, PropsWithChildren, ReactNode } from 'react';
 

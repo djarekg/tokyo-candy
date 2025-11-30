@@ -21,14 +21,17 @@
     "./form": {
       "import": "./src/form/index.tsx"
     },
-    "./icons/*": {
-      "import": "./src/icons/*.tsx"
+    "./icons": {
+      "import": "./src/icons/index.tsx"
     },
     "./loader": {
       "import": "./src/loader/loader.tsx"
     },
     "./styles/index.css": {
       "import": "./src/styles/index.css"
+    },
+    "./styles": {
+      "import": "./src/styles/index.ts"
     },
     ".": {
       "import": "./src/index.ts"
