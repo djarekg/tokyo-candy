@@ -8,5 +8,6 @@
       },
     ],
     "no-inline-styles": "off",
+    "no-scrollbar-color": "off",
   },
 }
