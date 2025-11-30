@@ -14,7 +14,7 @@ import styles from './search.module.css';
 // Create command palette items from search results
 const createItems = (results: SearchResult[] | null): CommandItem[] | undefined => {
   if (!results) {
-    return undefined;
+    return [];
   }
 
   return results.map(({ id, name, type }) => {
@@ -56,7 +56,10 @@ const Search = () => {
         className={styles.input}
         onClick={() => setIsOpen(true)}>
         <span className={styles.placeholder}>Search...</span>
-        <span className={`${styles.shortcutHint} tc-shortcut-hint`}>Ctrl+K</span>
+        <div className={styles.shortcuts}>
+          <span className={`${styles.shortcutHint} tc-shortcut-hint`}>/</span>
+          <span className={`${styles.shortcutHint} tc-shortcut-hint`}>Ctrl+K</span>
+        </div>
       </div>
       <CommandPalette
         open={isOpen}

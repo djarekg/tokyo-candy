@@ -5,6 +5,7 @@
 .dialogSurface {
   inline-size: 40%;
   padding: 0;
+  margin-block-start: 150px !important;
 
   header {
     border-bottom: 1px solid var(--colorNeutralStroke1);

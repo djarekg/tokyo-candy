@@ -13,8 +13,16 @@ type CommandListProps = {
   items: CommandItem[];
 };
 
+// const MAX_LIST_ITEM_COUNT = 6;
 const LIST_MARGIN_BLOCK = 10;
 const LINK_BLOCK_SIZE = 40;
+
+// const calculateListMaxBlockSize = useMemo(() => {
+//   return (itemCount: number, itemHeight: number) => {
+//     const totalHeight = itemCount * itemHeight + (itemCount - 1);
+//     return totalHeight;
+//   };
+// }, []);
 
 const useStyles = makeStyles({
   noRecords: {

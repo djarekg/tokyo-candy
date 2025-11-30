@@ -8,7 +8,14 @@ import {
   DialogTitle,
   type DialogOpenChangeData,
 } from '@fluentui/react-components';
-import { useEffect, useEffectEvent, useState, type FC, type PropsWithoutRef } from 'react';
+import {
+  Suspense,
+  useEffect,
+  useEffectEvent,
+  useState,
+  type FC,
+  type PropsWithoutRef,
+} from 'react';
 import CommandInput from './command-input';
 import type { CommandItem } from './command-item';
 import CommandList from './command-list';
@@ -65,13 +72,13 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   useEffect(() => {
     const cleanup = () => {
       document.body.classList.remove('tc-backdrop-visible');
+      onClose?.();
     };
 
     if (isOpen) {
       onOpen?.();
       document.body.classList.add('tc-backdrop-visible');
     } else {
-      onClose?.();
       cleanup();
     }
 
@@ -115,10 +122,12 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
             </header>
           </DialogTitle>
           <DialogContent className={styles.dialogContent}>
-            <CommandList
-              loading={isLoading}
-              items={displayItems}
-            />
+            <Suspense>
+              <CommandList
+                loading={isLoading}
+                items={displayItems}
+              />
+            </Suspense>
           </DialogContent>
         </DialogBody>
       </DialogSurface>

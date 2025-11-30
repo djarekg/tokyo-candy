@@ -31,8 +31,8 @@ const useStyles = makeStyles({
 
   shortcutHintContainer: {
     position: 'absolute',
-    insetInlineEnd: '10px',
     insetBlockStart: '16px',
+    insetInlineEnd: '10px',
     transform: 'translateY(-50%)',
     fontSize: 'var(--fontSizeBase200)',
     color: 'var(--colorNeutralForeground1)',
@@ -50,17 +50,22 @@ const useStyles = makeStyles({
  */
 const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
   const classes = useStyles();
+  const [inputTriggered, setInputTriggered] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const debouncedValue = useDebounce(searchValue, 500);
 
   const handleInput = ({ target }: InputEvent<HTMLInputElement>) => {
+    setInputTriggered(true);
     const value = (target as HTMLInputElement).value;
     setSearchValue(value);
   };
 
   useEffect(() => {
-    const valid = !isNull(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
-    onSearch(valid ? debouncedValue : undefined);
+    if (inputTriggered) {
+      const valid = !isNull(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
+      onSearch(valid ? debouncedValue : undefined);
+      setInputTriggered(false);
+    }
   }, [debouncedValue]);
 
   return (
