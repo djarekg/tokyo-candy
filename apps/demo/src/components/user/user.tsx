@@ -1,8 +1,8 @@
 'use server';
 
-import UserTabs from '@/components/user/user-tabs';
 import { getUserById } from '@/lib/api/user';
 import type { FC, PropsWithoutRef } from 'react';
+import UserTabs from './user-tabs';
 
 type User = {
   params: Promise<{ id: string }>;

@@ -11,8 +11,8 @@ import { tokens } from '@tc/components/styles';
 import type { UserModel } from '@tc/db';
 import { Activity, lazy, useState, type FC, type PropsWithoutRef } from 'react';
 
-const UserDetail = lazy(() => import('@/components/user/user-detail'));
-const UserSettings = lazy(() => import('@/components/user/user-settings'));
+const UserDetail = lazy(() => import('./user-detail'));
+const UserSettings = lazy(() => import('./user-settings'));
 
 type UserTabsProps = {
   user: UserModel;
