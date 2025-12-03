@@ -20,12 +20,12 @@
     "@tc/core": "workspace:*",
     "@tc/db": "workspace:*",
     "fluentui-next-appdir-directive": "0.3.0",
-    "next": "16.0.4",
+    "next": "16.0.6",
     "next-auth": "^5.0.0-beta.30",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "server-only": "0.0.1",
-    "swr": "2.3.6",
+    "swr": "2.3.7",
     "zod": "4.1.13"
   },
   "devDependencies": {
