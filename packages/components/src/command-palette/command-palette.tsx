@@ -49,6 +49,8 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [displayItems, setDisplayItems] = useState<CommandItem[]>(defaultItems);
   const [isLoading, setIsLoading] = useState(false);
+  // const [focused, setFocused] = useState(false);
+  //   const { findAllFocusable } = useFocusFinders();
 
   // Trap keyboard shortcuts to open the command palette
   const onKeydown = useEffectEvent((e: KeyboardEvent) => {
@@ -60,6 +62,10 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
 
   const handleOpenChange = (_: any, { open }: DialogOpenChangeData) => {
     setIsOpen(open);
+  };
+
+  const handleNavKeyDown = () => {
+    // setFocused(true);
   };
 
   // If we're searching then set loading state.
@@ -122,12 +128,16 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
           }}>
           <DialogTitle>
             <header>
-              <CommandInput onSearch={handleSearch} />
+              <CommandInput
+                onNavKeyDown={handleNavKeyDown}
+                onSearch={handleSearch}
+              />
             </header>
           </DialogTitle>
           <DialogContent className={styles.dialogContent}>
             <Suspense>
               <CommandList
+                // focused={focused}
                 loading={isLoading}
                 items={displayItems}
               />

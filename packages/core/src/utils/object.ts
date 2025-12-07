@@ -4,8 +4,18 @@
  * @param {unknown} value - The value to check.
  * @returns {boolean} - Returns true if the value is null or undefined, otherwise false.
  */
-export const isNull = (value: unknown): value is null => {
+export const isNullOrUndefined = (value: unknown): value is null => {
   return value === null || value === undefined;
+};
+
+/**
+ * Check if value is not null or undefined.
+ *
+ * @param {unknown} value The value to check.
+ * @returns {boolean} True if the value is not null or undefined, false otherwise.
+ */
+export const isNotNullOrUndefined = (value: unknown): boolean => {
+  return !isNullOrUndefined(value);
 };
 
 /**
@@ -30,3 +40,11 @@ export const isEmpty = (value: unknown): value is null | undefined => {
   // For numbers, booleans, etc., consider them "empty" only if they are falsy (e.g., 0, false)
   return !value;
 };
+
+/**
+ * Check if value is not empty.
+ *
+ * @param {string | object | Array<unknown> | unknown} value The value to check.
+ * @returns {boolean} True if the value is not empty, false otherwise.
+ */
+export const isNotEmpty = (value: string | object | Array<unknown>) => !isEmpty(value);

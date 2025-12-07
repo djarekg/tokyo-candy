@@ -2,7 +2,7 @@
 
 import { makeStyles } from '@fluentui/react-components';
 import { useDebounce } from '@tc/core/hooks';
-import { isNull } from '@tc/core/utils';
+import { isNullOrUndefined } from '@tc/core/utils';
 import {
   useEffect,
   useState,
@@ -12,6 +12,7 @@ import {
 } from 'react';
 
 type CommandInputProps = ComponentPropsWithoutRef<'input'> & {
+  onNavKeyDown?: () => void;
   onSearch: (value: string | undefined) => void;
 };
 
@@ -48,11 +49,18 @@ const useStyles = makeStyles({
  *
  * @param {CommandInputProps} props - The component props.
  */
-const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
+const CommandInput: FC<CommandInputProps> = ({ onNavKeyDown, onSearch, ...props }) => {
   const classes = useStyles();
   const [inputTriggered, setInputTriggered] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const debouncedValue = useDebounce(searchValue, 500);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      onNavKeyDown?.();
+    }
+  };
 
   const handleInput = ({ target }: InputEvent<HTMLInputElement>) => {
     setInputTriggered(true);
@@ -62,7 +70,8 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
 
   useEffect(() => {
     if (inputTriggered) {
-      const valid = !isNull(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
+      const valid =
+        !isNullOrUndefined(debouncedValue) && debouncedValue.length >= MIN_SEARCH_LENGTH;
       onSearch(valid ? debouncedValue : undefined);
       setInputTriggered(false);
     }
@@ -74,6 +83,7 @@ const CommandInput: FC<CommandInputProps> = ({ onSearch, ...props }) => {
         placeholder="Let's search for something interesting..."
         autoFocus={true}
         className={classes.input}
+        onKeyDown={handleKeyDown}
         onInput={handleInput}
         {...props}
       />

@@ -1,29 +1,25 @@
 'use client';
 
+import CommandListLoader from '#app/command-palette/command-list-loader';
 import { Link, List, ListItem, makeStyles } from '@fluentui/react-components';
 import { bundleIcon } from '@fluentui/react-icons';
 import { isEmpty } from '@tc/core/utils';
-import { lazy, useMemo, type FC } from 'react';
+import { type FC } from 'react';
 import type { CommandItem } from './command-item';
-
-const Loader = lazy(() => import('#app/loader/loader'));
 
 type CommandListProps = {
   loading?: boolean;
   items: CommandItem[];
 };
 
-const MAX_LIST_ITEM_COUNT = 6;
 const LIST_MARGIN_BLOCK = 10;
 const LINK_BLOCK_SIZE = 40;
-const DEFAULT_BLOCK_SIZE = '200px';
 
 const useStyles = makeStyles({
   noRecords: {
     display: 'grid',
     placeContent: 'center',
     fontSize: 'var(--fontSizeBase400)',
-    // fontWeight: 'var(--fontWeightSemibold)',
     color: 'var(--colorNeutralForeground3)',
     padding: '1rem',
   },
@@ -62,19 +58,8 @@ const useStyles = makeStyles({
 const CommandList: FC<CommandListProps> = ({ loading, items }) => {
   const classes = useStyles();
 
-  // Calculate block size based on item count, item height, and margin.
-  const calculateBlockSize = useMemo(
-    () => (itemCount: number) => {
-      return itemCount > 0 && itemCount < MAX_LIST_ITEM_COUNT
-        ? `${LINK_BLOCK_SIZE * itemCount + LIST_MARGIN_BLOCK * itemCount + 10}px`
-        : DEFAULT_BLOCK_SIZE;
-    },
-    []
-  );
-
   if (loading) {
-    const blockSize = calculateBlockSize(items?.length ?? 0);
-    return <Loader blockSize={blockSize} />;
+    return <CommandListLoader itemCount={items.length ?? 0} />;
   }
 
   if (isEmpty(items)) {
