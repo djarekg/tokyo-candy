@@ -104,6 +104,7 @@
         "@prisma/adapter-ppg": "^7.0.1",
         "@prisma/client": "^7.0.1",
         "@prisma/extension-accelerate": "2.0.2",
+        "@tc/core": "workspace:*",
         "bcryptjs": "3.0.3",
         "pg": "^8.16.3",
       },

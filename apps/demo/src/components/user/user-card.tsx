@@ -1,19 +1,36 @@
+'use client';
+
 import { Card, CardHeader, Persona } from '@fluentui/react-components';
-import type { UserModel } from '@tc/db';
-import type { FC } from 'react';
+import { format } from '@tc/core';
+import { type UserModel } from '@tc/db';
+import { useMemo, type FC } from 'react';
 
 type UserCardProps = {
+  index: number; // workaround until imageId is added to UserModel
   user: UserModel;
 };
 
-const UserCard: FC<UserCardProps> = ({ user, ...props }) => {
+const AVATAR_URL = process.env.NEXT_PUBLIC_AVATAR_URL!;
+
+const UserCard: FC<UserCardProps> = ({ index, user, ...props }) => {
+  const { firstName, lastName, jobTitle, gender } = user;
+  const avatarUrl = useMemo(
+    () => format(AVATAR_URL, gender === 'MALE' ? 'men' : 'women', index.toString()),
+    [gender, index]
+  );
+
   return (
     <Card {...props}>
       <CardHeader
         header={
           <Persona
-            name={`${user.firstName} ${user.lastName}`}
-            secondaryText={user.jobTitle}
+            name={`${firstName} ${lastName}`}
+            secondaryText={jobTitle}
+            avatar={{
+              image: {
+                src: avatarUrl,
+              },
+            }}
           />
         }
       />
