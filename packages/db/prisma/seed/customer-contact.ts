@@ -40,6 +40,7 @@ export const createCustomerContacts = async (prisma: PrismaClient) => {
         stateId: randomStateId(),
         zip: faker.location.zipCode({ format: '#####' }),
         phone: faker.phone.number({ style: 'national' }),
+        imageId: faker.number.int({ min: 1, max: 99 }),
         isActive: faker.datatype.boolean(0.8),
       });
 

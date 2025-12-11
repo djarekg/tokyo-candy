@@ -46,6 +46,10 @@ const useStyles = makeStyles({
     '&:hover': {
       textDecoration: 'none',
       background: 'var(--colorNeutralBackground1Hover)',
+
+      '& a': {
+        textDecorationLine: 'none',
+      },
     },
   },
 });

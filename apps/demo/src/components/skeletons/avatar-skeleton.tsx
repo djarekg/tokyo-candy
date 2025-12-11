@@ -1,16 +1,17 @@
 'use client';
 
 import { makeStyles, Skeleton, SkeletonItem } from '@fluentui/react-components';
+import { tokens } from '@tc/components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     alignItems: 'center',
-    padding: '12px',
-    blockSize: '58px',
+    padding: tokens.spacingVerticalM,
+    blockSize: '60px',
     borderRadius: 'var(--borderRadiusMedium)',
     background: 'var(--colorNeutralBackground1)',
-    boxShadow: 'var(--shadow8)',
+    boxShadow: 'var(--shadow4)',
   },
   textContainer: {
     display: 'flex',
@@ -28,16 +29,16 @@ const AvatarSkeleton = () => {
     <Skeleton className={classes.container}>
       <SkeletonItem
         shape="circle"
-        size={32}
+        size={36}
       />
       <div className={classes.textContainer}>
         <SkeletonItem
-          size={12}
-          style={{ inlineSize: '65%' }}
+          size={16}
+          style={{ inlineSize: '35%' }}
         />
         <SkeletonItem
-          size={8}
-          style={{ inlineSize: '30%' }}
+          size={12}
+          style={{ inlineSize: '60%' }}
         />
       </div>
     </Skeleton>

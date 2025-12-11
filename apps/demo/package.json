@@ -13,23 +13,23 @@
     "start": "bun next start"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.72.6",
-    "@fluentui/react-icons": "2.0.315",
+    "@fluentui/react-components": "^9.72.8",
+    "@fluentui/react-icons": "2.0.316",
     "@tc/auth": "workspace:*",
     "@tc/components": "workspace:*",
     "@tc/core": "workspace:*",
     "@tc/db": "workspace:*",
     "fluentui-next-appdir-directive": "0.3.0",
-    "next": "16.0.6",
+    "next": "16.0.8",
     "next-auth": "^5.0.0-beta.30",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "server-only": "0.0.1",
     "swr": "2.3.7",
     "zod": "4.1.13"
   },
   "devDependencies": {
-    "@types/bun": "1.3.3",
+    "@types/bun": "1.3.4",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "babel-plugin-react-compiler": "1.0.0"

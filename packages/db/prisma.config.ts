@@ -10,6 +10,7 @@ export default defineConfig({
     // Prefer DIRECT TCP via DATABASE_URL
     // url: env('DATABASE_URL'),
     url: process.env.DATABASE_URL!,
+    shadowDatabaseUrl: process.env.DIRECT_URL!,
     // Optional directUrl moved from schema
     // Optionally support shadow DB if present:
     // shadowDatabaseUrl: env('SHADOW_DATABASE_URL'),

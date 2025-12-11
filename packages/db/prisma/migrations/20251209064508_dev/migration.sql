@@ -36,8 +36,10 @@ CREATE TABLE "User" (
     "zip" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "jobTitle" TEXT NOT NULL,
+    "imageId" INTEGER NOT NULL,
     "isActive" BOOLEAN NOT NULL DEFAULT false,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -64,7 +66,7 @@ CREATE TABLE "Customer" (
     "phone" TEXT NOT NULL,
     "isActive" BOOLEAN NOT NULL DEFAULT false,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dateUpdated" TIMESTAMP(3) NOT NULL,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "Customer_pkey" PRIMARY KEY ("id")
 );
@@ -82,9 +84,10 @@ CREATE TABLE "CustomerContact" (
     "stateId" TEXT NOT NULL,
     "zip" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
+    "imageId" INTEGER NOT NULL,
     "isActive" BOOLEAN NOT NULL DEFAULT false,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dateUpdated" TIMESTAMP(3) NOT NULL,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "CustomerContact_pkey" PRIMARY KEY ("id")
 );
@@ -110,7 +113,7 @@ CREATE TABLE "ProductColor" (
     "productId" TEXT NOT NULL,
     "color" "Color" NOT NULL,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dateUpdated" TIMESTAMP(3) NOT NULL,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "ProductColor_pkey" PRIMARY KEY ("id")
 );
@@ -122,7 +125,7 @@ CREATE TABLE "ProductInventory" (
     "size" "Size" NOT NULL,
     "quantity" INTEGER NOT NULL,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dateUpdated" TIMESTAMP(3) NOT NULL,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "ProductInventory_pkey" PRIMARY KEY ("id")
 );
@@ -136,7 +139,7 @@ CREATE TABLE "ProductSale" (
     "quantity" INTEGER NOT NULL,
     "price" DECIMAL(10,2) NOT NULL,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "dateUpdated" TIMESTAMP(3) NOT NULL,
+    "dateUpdated" TIMESTAMP(3),
 
     CONSTRAINT "ProductSale_pkey" PRIMARY KEY ("id")
 );

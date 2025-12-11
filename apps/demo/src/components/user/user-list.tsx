@@ -30,10 +30,9 @@ const UserList: FC<UserListProps> = ({ users }) => {
 
   return (
     <div className={classes.container}>
-      {users.map((user, index) => (
+      {users.map(user => (
         <UserCard
           key={user.id}
-          index={index}
           user={user}
         />
       ))}

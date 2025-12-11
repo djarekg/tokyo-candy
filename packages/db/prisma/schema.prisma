@@ -92,6 +92,7 @@ model User {
   zip            String
   phone          String
   jobTitle       String
+  imageId        Int
   isActive       Boolean         @default(false)
   dateCreated    DateTime        @default(now())
   dateUpdated    DateTime?       @updatedAt
@@ -137,6 +138,7 @@ model CustomerContact {
   stateId        String
   zip            String
   phone          String
+  imageId        Int
   isActive       Boolean   @default(false)
   dateCreated    DateTime  @default(now())
   dateUpdated    DateTime? @updatedAt
