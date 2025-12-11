@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     inlineSize: '90%',
-    marginLeft: '8px',
-    gap: '4px',
+    marginLeft: tokens.spacingVerticalS,
+    gap: tokens.spacingHorizontalXS,
   },
 });
 
@@ -30,6 +30,7 @@ const AvatarSkeleton = () => {
       <SkeletonItem
         shape="circle"
         size={36}
+        style={{ inlineSize: 36 }}
       />
       <div className={classes.textContainer}>
         <SkeletonItem
