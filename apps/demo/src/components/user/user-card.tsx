@@ -1,6 +1,6 @@
 'use client';
 
-import { Badge, Caption1, makeStyles, Text } from '@fluentui/react-components';
+import { Badge, Caption1, Card, CardHeader, makeStyles, Persona } from '@fluentui/react-components';
 import { tokens } from '@tc/components';
 import { format } from '@tc/core';
 import { type UserModel } from '@tc/db';
@@ -13,62 +13,71 @@ type UserCardProps = {
 const AVATAR_URL = process.env.NEXT_PUBLIC_AVATAR_URL!;
 
 const useStyles = makeStyles({
-  container: {
+  card: {
     position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    blockSize: '64px',
-    borderRadius: tokens.borderRadiusMedium,
-    padding: tokens.spacingVerticalM,
-    boxShadow: tokens.shadow4,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  text: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-  },
-  caption: {
-    color: tokens.colorNeutralForeground3,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-  },
-  image: {
-    inlineSize: '40px',
-    blockSize: '40px',
-    borderRadius: tokens.borderRadiusCircular,
   },
   badge: {
     position: 'absolute',
-    insetBlockStart: '10px',
-    insetInlineEnd: '10px',
+    insetBlockStart: tokens.spacingVerticalS,
+    insetInlineEnd: tokens.spacingHorizontalS,
+  },
+  header: {
+    inlineSize: '100%',
+
+    '> .fui-CardHeader__header': {
+      inlineSize: '100%',
+    },
+  },
+  description: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    inlineSize: '100%',
+  },
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+  persona: {
+    inlineSize: '100%',
+
+    '> .fui-Persona__secondaryText': {
+      inlineSize: '100%',
+    },
   },
 });
 
 const UserCard: FC<UserCardProps> = ({ user, ...props }) => {
   const classes = useStyles();
   const { firstName, lastName, jobTitle, gender, imageId, isActive } = user;
-  const fullName = `${firstName} ${lastName}`;
   const avatarUrl = useMemo(
     () => format(AVATAR_URL, gender === 'MALE' ? 'men' : 'women', imageId.toString()),
     [gender, imageId]
   );
 
   return (
-    <div
-      className={classes.container}
+    <Card
+      className={classes.card}
       {...props}>
-      <img
-        className={classes.image}
-        src={avatarUrl}
-        alt={fullName}
+      <CardHeader
+        className={classes.header}
+        header={
+          <Persona
+            className={classes.persona}
+            name={`${firstName} ${lastName}`}
+            secondaryText={
+              <div className={classes.description}>
+                <Caption1 className={classes.caption}>{jobTitle}</Caption1>
+              </div>
+            }
+            size="large"
+            avatar={{
+              image: {
+                src: avatarUrl,
+              },
+            }}
+          />
+        }
       />
-      <div className={classes.text}>
-        <Text as="h2">{fullName}</Text>
-        <Caption1 className={classes.caption}>{jobTitle}</Caption1>
-      </div>
       {!isActive && (
         <Badge
           className={classes.badge}
@@ -79,7 +88,7 @@ const UserCard: FC<UserCardProps> = ({ user, ...props }) => {
           Inactive
         </Badge>
       )}
-    </div>
+    </Card>
   );
 };
 
