@@ -13,6 +13,7 @@ type FormCardProps = {
 
 const useStyles = makeStyles({
   card: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     paddingInline: tokens.spacingHorizontalL,
@@ -40,6 +41,16 @@ const useStyles = makeStyles({
 
     '> [class^="fui-"]': {
       inlineSize: '100%',
+    },
+  },
+  icon: {
+    position: 'absolute',
+    insetBlockStart: tokens.spacingVerticalM,
+    insetInlineEnd: tokens.spacingHorizontalM,
+
+    '& > img': {
+      borderRadius: tokens.borderRadiusCircular,
+      border: `2px solid ${tokens.colorNeutralStroke1}`,
     },
   },
 });
@@ -73,7 +84,7 @@ const FormCard: FC<PropsWithChildren<FormCardProps>> = ({
       {...props}>
       <header className={classes.header}>
         <div className={classes.title}>{title}</div>
-        {icon && icon}
+        {icon && <div className={classes.icon}>{icon}</div>}
       </header>
       <div
         className={classes.content}

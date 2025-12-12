@@ -8,6 +8,7 @@ import { useMemo, type FC } from 'react';
 
 type UserCardProps = {
   user: UserModel;
+  onClick?: (user: UserModel) => void;
 };
 
 const AVATAR_URL = process.env.NEXT_PUBLIC_AVATAR_URL!;
@@ -15,6 +16,15 @@ const AVATAR_URL = process.env.NEXT_PUBLIC_AVATAR_URL!;
 const useStyles = makeStyles({
   card: {
     position: 'relative',
+    transition: `transform 200ms ease-in-out, box-shadow 200ms ease-in-out`,
+    cursor: 'pointer',
+    blockSize: '60px',
+
+    '&:hover': {
+      transform: 'scale(1.05)',
+      boxShadow: tokens.shadow8,
+      backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralBackground2Hover} 87%, black)`,
+    },
   },
   badge: {
     position: 'absolute',
@@ -46,17 +56,19 @@ const useStyles = makeStyles({
   },
 });
 
-const UserCard: FC<UserCardProps> = ({ user, ...props }) => {
+const UserCard: FC<UserCardProps> = ({ user, onClick, ...props }) => {
   const classes = useStyles();
   const { firstName, lastName, jobTitle, gender, imageId, isActive } = user;
   const avatarUrl = useMemo(
     () => format(AVATAR_URL, gender === 'MALE' ? 'men' : 'women', imageId.toString()),
     [gender, imageId]
   );
+  const handleClick = () => onClick?.(user);
 
   return (
     <Card
       className={classes.card}
+      onClick={handleClick}
       {...props}>
       <CardHeader
         className={classes.header}

@@ -30,7 +30,7 @@ const AvatarSkeleton = () => {
       <SkeletonItem
         shape="circle"
         size={36}
-        style={{ inlineSize: 36 }}
+        style={{ inlineSize: '36px !important' }}
       />
       <div className={classes.textContainer}>
         <SkeletonItem

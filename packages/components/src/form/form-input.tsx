@@ -27,6 +27,7 @@ const FormInput = ({
 }: FormInputProps) => {
   return (
     <Field
+    className="app-form-input"
       label={placeholder}
       {...props}>
       <Input
