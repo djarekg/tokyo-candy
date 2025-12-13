@@ -14,7 +14,8 @@
   animation: shimmer 3s linear infinite;
 }
 
-.tc-backdrop-visible .colorBrandGradient {
+.tc-backdrop-visible .colorBrandGradient,
+.colorBrandGradient.tc-reduce-motion {
   animation: none;
 }
 

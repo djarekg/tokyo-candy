@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     insetBlockStart: tokens.spacingVerticalS,
     insetInlineEnd: tokens.spacingHorizontalS,
+    color: tokens.colorPaletteBerryBackground3,
   },
   header: {
     inlineSize: '100%',
@@ -93,7 +94,7 @@ const UserCard: FC<UserCardProps> = ({ user, onClick, ...props }) => {
       {!isActive && (
         <Badge
           className={classes.badge}
-          color="danger"
+          // color=""
           size="small"
           shape="rounded"
           appearance="outline">

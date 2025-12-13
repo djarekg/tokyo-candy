@@ -3,6 +3,7 @@
 import { auth } from '@/auth';
 import UserMenu from '@/components/auth/user-menu';
 import Search from '@/components/search/search';
+import SiteTitle from '@/components/site-title/site-title';
 import { CandyLollipopIcon } from '@tc/components/icons';
 import Link from 'next/link';
 import type { ComponentProps, FC } from 'react';
@@ -21,6 +22,7 @@ const Header: FC<ComponentProps<'header'>> = async () => {
           className={styles.link}
         />
       </Link>
+      <SiteTitle />
       <div className={styles.actions}>
         <Search />
         <UserMenu userId={session.user.id} />
