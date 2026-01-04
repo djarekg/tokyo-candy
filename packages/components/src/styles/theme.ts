@@ -9,6 +9,7 @@ import { color, layout } from './constants';
 type AppTheme = Theme & {
   layoutBlockSize: string;
   colorBrandForeground0: string;
+  colorBrandGradient: string;
   colorSecondaryForeground1: string;
   colorSecondaryForeground2: string;
   colorSecondaryForegroundGradient: string;
@@ -18,6 +19,7 @@ const lightTheme: AppTheme = {
   ...createLightTheme(color.brand.palette),
   layoutBlockSize: layout.blockSize,
   colorBrandForeground0: color.brand.foreground0,
+  colorBrandGradient: color.brand.gradient,
   colorSecondaryForeground1: color.secondary.foreground1,
   colorSecondaryForeground2: color.secondary.foreground2,
   colorSecondaryForegroundGradient: `
@@ -30,6 +32,7 @@ const darkTheme: AppTheme = {
   layoutBlockSize: layout.blockSize,
   // colorNeutralBackground1: color.neutral.background1,
   colorBrandForeground0: color.brand.foreground0,
+  colorBrandGradient: color.brand.gradient,
   colorSecondaryForeground1: color.secondary.foreground1,
   colorSecondaryForeground2: color.secondary.foreground2,
   colorSecondaryForegroundGradient: `
@@ -44,6 +47,7 @@ const tokens: Record<keyof AppTheme, string> = {
   ...fluentuiTokens,
   layoutBlockSize: `var(--layoutBlockSize)`,
   colorBrandForeground0: `var(--colorBrandForeground0)`,
+  colorBrandGradient: `var(--colorBrandGradient)`,
   colorSecondaryForeground1: `var(--colorSecondaryForeground1)`,
   colorSecondaryForeground2: `var(--colorSecondaryForeground2)`,
   colorSecondaryForegroundGradient: `var(--colorSecondaryForegroundGradient)`,

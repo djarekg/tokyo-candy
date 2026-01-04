@@ -2,15 +2,12 @@
 
 import { makeStyles } from '@fluentui/react-components';
 import { FormCard, FormInput } from '@tc/components/form';
-import { format } from '@tc/core';
 import type { UserModel } from '@tc/db';
-import { useMemo, type ComponentProps, type FC } from 'react';
+import { type ComponentProps, type FC } from 'react';
 
 type UserDetailProps = ComponentProps<'form'> & {
   user: UserModel;
 };
-
-const AVATAR_URL = process.env.NEXT_PUBLIC_AVATAR_URL!;
 
 const useStyles = makeStyles({
   form: {
@@ -25,28 +22,13 @@ const useStyles = makeStyles({
     inlineSize: '100%',
   },
   zip: {
-    inlineSize: '100px',
+    inlineSize: '5ch',
   },
 });
 
 const UserDetail: FC<UserDetailProps> = ({ className, user, ...props }) => {
   const classes = useStyles();
-  const {
-    firstName,
-    lastName,
-    email,
-    gender,
-    imageId,
-    streetAddress,
-    streetAddress2,
-    city,
-    stateId,
-    zip,
-  } = user;
-  const avatarUrl = useMemo(
-    () => format(AVATAR_URL, gender === 'MALE' ? 'men' : 'women', imageId.toString()),
-    [gender, imageId]
-  );
+  const { firstName, lastName, email, streetAddress, streetAddress2, city, stateId, zip } = user;
 
   return (
     <form
@@ -54,15 +36,7 @@ const UserDetail: FC<UserDetailProps> = ({ className, user, ...props }) => {
       {...props}>
       <FormCard
         title="Contact information"
-        layout="grid"
-        icon={
-          <img
-            src={avatarUrl}
-            alt="User Avatar"
-            width={46}
-            height={46}
-          />
-        }>
+        layout="grid">
         <FormInput
           name="firstName"
           value={firstName}

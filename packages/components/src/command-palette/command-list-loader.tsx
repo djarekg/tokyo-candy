@@ -52,7 +52,7 @@ const CommandListLoader: FC<CommandListLoaderProps> = ({ itemCount = MAX_LIST_IT
             size={20}
           />
           <SkeletonItem
-            size={16}
+            size={12}
             style={{ inlineSize: `${randomInRange(150, 300)}px` }}
           />
         </Skeleton>

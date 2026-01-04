@@ -25,6 +25,16 @@ export const color = {
   },
   brand: {
     foreground0: 'hsla(270, 51%, 32%, 1.00)',
+    gradient: `
+      linear-gradient(
+        to right,
+        var(--colorPaletteBerryBackground3) 10%,
+        var(--colorSecondaryForeground1) 50%,
+        var(--colorBrandForeground0) 80%,
+        var(--colorPaletteBerryBackground3) 100%
+      ) -100%/
+      200%;
+    `,
     palette: brandPalette,
   },
   neutral: {
