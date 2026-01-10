@@ -46,7 +46,10 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   onClose,
   onSearch,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isControlled = open !== undefined;
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const dialogOpen = isControlled ? open : uncontrolledOpen;
+
   const [displayItems, setDisplayItems] = useState<CommandItem[]>(defaultItems);
   const [isLoading, setIsLoading] = useState(false);
   // const [focused, setFocused] = useState(false);
@@ -56,12 +59,24 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
   const onKeydown = useEffectEvent((e: KeyboardEvent) => {
     if (e.key === '/' || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) {
       e.preventDefault();
-      setIsOpen(prev => !prev);
+
+      if (isControlled) {
+        // When controlled, ask parent to change state.
+        if (dialogOpen) onClose?.();
+        else onOpen?.();
+      } else {
+        setUncontrolledOpen(prev => !prev);
+      }
     }
   });
 
-  const handleOpenChange = (_: any, { open }: DialogOpenChangeData) => {
-    setIsOpen(open);
+  const handleOpenChange = (_: unknown, data: DialogOpenChangeData) => {
+    if (!isControlled) {
+      setUncontrolledOpen(data.open);
+    }
+
+    if (data.open) onOpen?.();
+    else onClose?.();
   };
 
   const handleNavKeyDown = () => {
@@ -85,7 +100,7 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
       onClose?.();
     };
 
-    if (isOpen) {
+    if (open) {
       onOpen?.();
       element?.classList.add('tc-backdrop-visible');
     } else {
@@ -93,12 +108,6 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
     }
 
     return cleanup;
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (open !== undefined) {
-      setIsOpen(open);
-    }
   }, [open]);
 
   // Wire up keydown event listener
@@ -114,7 +123,7 @@ const CommandPalette: FC<PropsWithoutRef<CommandPaletteProps>> = ({
 
   return (
     <Dialog
-      open={isOpen}
+      open={dialogOpen}
       onOpenChange={handleOpenChange}>
       <DialogSurface
         className={styles.dialogSurface}

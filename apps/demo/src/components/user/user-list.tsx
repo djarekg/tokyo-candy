@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     },
   },
   '@starting-style': {
-    '.container': {
+    '& .container': {
       opacity: 0,
     },
   },

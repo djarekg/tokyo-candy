@@ -66,6 +66,7 @@ const Search = () => {
         defaultItems={defaultItems}
         items={items}
         onSearch={value => setSearchValue(value)}
+        onOpen={() => setIsOpen(true)}
         onClose={() => setIsOpen(false)}
       />
     </>
