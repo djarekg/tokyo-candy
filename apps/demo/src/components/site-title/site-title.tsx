@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     blockSize: '40px',
-    fontSize: '2.1rem',
+    fontSize: '1.8rem',
     fontWeight: tokens.fontWeightSemibold,
   },
 });

@@ -3,6 +3,7 @@
 import { auth } from '@/auth';
 import UserMenu from '@/components/auth/user-menu';
 import Search from '@/components/search/search';
+import SiteMenu from '@/components/site-menu/site-menu';
 import SiteTitle from '@/components/site-title/site-title';
 import { CandyLollipopIcon } from '@tc/components/icons';
 import Link from 'next/link';
@@ -16,13 +17,16 @@ const Header: FC<ComponentProps<'header'>> = async () => {
 
   return (
     <header className={styles.header}>
-      <Link href="/">
-        <CandyLollipopIcon
-          size={48}
-          className={styles.link}
-        />
-      </Link>
-      <SiteTitle />
+      <section className={styles.homeLinkContainer}>
+        <Link href="/">
+          <CandyLollipopIcon
+            size={48}
+            className={styles.link}
+          />
+        </Link>
+        <SiteTitle />
+      </section>
+      <SiteMenu className={styles.siteMenu} />
       <div className={styles.actions}>
         <Search />
         <UserMenu userId={session.user.id} />
