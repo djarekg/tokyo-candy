@@ -2,12 +2,21 @@
 
 import { getUsers } from '@/app/api/user';
 import UserList from '@/components/user/user-list';
-import { Suspense, type FC } from 'react';
+import { Suspense } from 'react';
 import Loading from './loading';
 import styles from './page.module.css';
 
-const Users: FC = async () => {
-  const users = await getUsers();
+// type UsersProps = {
+//   searchParams: UserFilterType;
+// };
+
+const Users = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { isActive } = await searchParams;
+  const users = await getUsers({ isActiveOnly: isActive === 'true' });
 
   return (
     <Suspense fallback={<Loading />}>
@@ -17,7 +26,5 @@ const Users: FC = async () => {
     </Suspense>
   );
 };
-
-// imagine safelyGetRandomNumber is a function that handles synchronizing the random number chosen between SSR and hydration to avoid hydration errors
 
 export default Users;

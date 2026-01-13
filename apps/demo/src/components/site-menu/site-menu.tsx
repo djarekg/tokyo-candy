@@ -1,6 +1,7 @@
 'use client';
 
 import { Link, List, ListItem, makeStyles } from '@fluentui/react-components';
+import { tokens } from '@tc/components';
 
 type SiteMenuProps = {
   className?: string;
@@ -11,6 +12,10 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     gap: '1rem',
+
+    '& a': {
+      fontSize: tokens.fontSizeBase400,
+    },
   },
 });
 

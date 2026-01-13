@@ -7,6 +7,7 @@ export { default as CandyLollipopMulticolorIcon } from './candy-lollipop-multico
 export { default as ClothIcon } from './cloth';
 export { default as ContactIcon } from './contact';
 export { default as ContactFilledIcon } from './contact-filled';
+export { default as FilterIcon } from './filter';
 export { default as GhostIcon } from './ghost';
 export { default as GhostFilledIcon } from './ghost-filled';
 export { default as GithubIcon } from './github';

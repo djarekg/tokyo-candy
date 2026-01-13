@@ -1,0 +1,18 @@
+.header {
+  --_end-offset: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-areas: "a b c";
+  padding-inline: var(--spacingHorizontalXL) calc(var(--spacingHorizontalXL) - var(--_end-offset));
+}
+
+.header > :nth-child(1) {
+  grid-area: b;
+  justify-self: center;
+}
+
+.header > :nth-child(2) {
+  grid-area: c;
+  justify-self: end;
+}
