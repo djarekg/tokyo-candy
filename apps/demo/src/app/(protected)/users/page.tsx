@@ -4,11 +4,6 @@ import { getUsers } from '@/app/api/user';
 import UserList from '@/components/user/user-list';
 import { Suspense } from 'react';
 import Loading from './loading';
-import styles from './page.module.css';
-
-// type UsersProps = {
-//   searchParams: UserFilterType;
-// };
 
 const Users = async ({
   searchParams,
@@ -20,7 +15,7 @@ const Users = async ({
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className={`${styles.page} page`}>
+      <div className="page">
         <UserList users={users} />
       </div>
     </Suspense>

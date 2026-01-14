@@ -54,9 +54,20 @@ a {
   }
 }
 
+.layout,
+.page {
+  --app-page-layout-padding: var(--spacingHorizontalXXXL);
+  padding-inline: var(--app-page-layout-padding);
+}
+
+.layout {
+  padding-block: var(--spacingVerticalL);
+}
+
 .page {
   --_block-size: calc(100vh - var(--layoutBlockSize) * 2);
 
   min-block-size: var(--_block-size);
   block-size: var(--_block-size);
+  padding-block: var(--app-page-layout-padding);
 }

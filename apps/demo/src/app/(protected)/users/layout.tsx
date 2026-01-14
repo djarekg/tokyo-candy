@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={`layout ${styles.header}`}>
         <h1>Users</h1>
         <UserFilter onChange={handleFilterChange} />
       </header>
