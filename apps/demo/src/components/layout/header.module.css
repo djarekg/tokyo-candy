@@ -34,8 +34,25 @@
 }
 
 .siteMenu {
+  --_start-offset: calc(var(--layoutBlockSize) / 4 * -1);
+
   align-self: center;
   justify-self: center;
+  visibility: visible;
+  content-visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 1.1s ease-in 1s,
+    transform 0.9s ease-in 1s;
+  will-change: opacity;
+
+  @starting-style {
+    visibility: hidden;
+    content-visibility: hidden;
+    opacity: 0;
+    transform: translateY(var(--_start-offset));
+  }
 }
 
 .actions {

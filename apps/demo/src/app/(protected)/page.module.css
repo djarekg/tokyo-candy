@@ -15,4 +15,15 @@
 
 .titleBrand {
   font-size: 1.6em;
+  visibility: visible;
+  content-visibility: visible;
+  opacity: 1;
+  transition: opacity 2.8s ease-in 0.5s;
+  will-change: opacity;
+
+  @starting-style {
+    visibility: hidden;
+    content-visibility: hidden;
+    opacity: 0;
+  }
 }
