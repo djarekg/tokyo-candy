@@ -12,7 +12,7 @@ const Signin = () => {
     <div className={styles.container}>
       <div className={styles.title}>
         <span className={styles.titleAction}>Sign in to&nbsp;</span>
-        <span className={`${styles.titleBrand} colorBrandGradient`}>Tokyo Candy</span>
+        <span className="appTitleBrand colorBrandGradient">Tokyo Candy</span>
       </div>
       <form
         action={formAction}

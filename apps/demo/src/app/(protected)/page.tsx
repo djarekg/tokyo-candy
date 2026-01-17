@@ -5,7 +5,7 @@ const Home = () => {
     <div className={`page ${styles.page}`}>
       <div className={styles.title}>
         <span className={styles.titleAction}>Welcome to&nbsp;</span>
-        <span className={`${styles.titleBrand} colorBrandGradient`}>Tokyo Candy</span>
+        <span className="appTitleBrand colorBrandGradient">Tokyo Candy</span>
       </div>
     </div>
   );
