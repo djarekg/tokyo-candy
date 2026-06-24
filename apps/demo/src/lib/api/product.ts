@@ -30,3 +30,10 @@ export const searchProducts = async (value: string) => {
     description,
   })) satisfies SearchResult[];
 };
+
+export const getProducts = async () => {
+  'use cache';
+  cacheLife('minutes');
+
+  return prisma.product.findMany({});
+};
